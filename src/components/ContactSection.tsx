@@ -21,12 +21,13 @@ const ContactSection = () => {
         </motion.div>
 
         <motion.form
+          action="https://formspree.io/f/xvzyjaae"
+          method="POST"
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="glass-card-strong p-8 md:p-12 space-y-6"
-          onSubmit={(e) => e.preventDefault()}
         >
           <div className="grid md:grid-cols-2 gap-6">
             <div>
@@ -35,7 +36,9 @@ const ContactSection = () => {
               </label>
               <input
                 type="text"
+                name="name"
                 placeholder="Your full name"
+                required
                 className="w-full px-4 py-3 rounded-xl bg-muted/50 border border-border/60 text-foreground placeholder:text-muted-foreground font-sans text-sm focus:outline-none focus:ring-2 focus:ring-gold/40 transition-shadow"
               />
             </div>
@@ -45,7 +48,9 @@ const ContactSection = () => {
               </label>
               <input
                 type="email"
+                name="email"
                 placeholder="your@email.com"
+                required
                 className="w-full px-4 py-3 rounded-xl bg-muted/50 border border-border/60 text-foreground placeholder:text-muted-foreground font-sans text-sm focus:outline-none focus:ring-2 focus:ring-gold/40 transition-shadow"
               />
             </div>
@@ -55,8 +60,10 @@ const ContactSection = () => {
               Message
             </label>
             <textarea
+              name="message"
               rows={5}
               placeholder="How can I help you?"
+              required
               className="w-full px-4 py-3 rounded-xl bg-muted/50 border border-border/60 text-foreground placeholder:text-muted-foreground font-sans text-sm focus:outline-none focus:ring-2 focus:ring-gold/40 transition-shadow resize-none"
             />
           </div>
