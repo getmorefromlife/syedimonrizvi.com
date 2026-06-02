@@ -33,6 +33,11 @@ const ROUTES = [
   "/tools/stakeholder-salience",
   "/tools/team-health",
   "/tools/okr-tracker",
+  "/tools/definition-of-done",
+  "/tools/decision-log",
+  "/tools/lessons-learned",
+  "/tools/escaped-defects",
+  "/tools/sprint-review-feedback",
 ];
 
 const MIME = {

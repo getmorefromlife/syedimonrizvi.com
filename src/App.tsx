@@ -31,6 +31,11 @@ import DependenciesMatrixPage from "./pages/DependenciesMatrixPage";
 import StakeholderSaliencePage from "./pages/StakeholderSaliencePage";
 import TeamHealthCheckPage from "./pages/TeamHealthCheckPage";
 import OKRTrackerPage from "./pages/OKRTrackerPage";
+import DefinitionOfDonePage from "./pages/DefinitionOfDonePage";
+import DecisionLogPage from "./pages/DecisionLogPage";
+import LessonsLearnedPage from "./pages/LessonsLearnedPage";
+import EscapedDefectsPage from "./pages/EscapedDefectsPage";
+import SprintReviewCollectorPage from "./pages/SprintReviewCollectorPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -68,6 +73,11 @@ const App = () => (
           <Route path="/tools/stakeholder-salience" element={<StakeholderSaliencePage />} />
           <Route path="/tools/team-health" element={<TeamHealthCheckPage />} />
           <Route path="/tools/okr-tracker" element={<OKRTrackerPage />} />
+          <Route path="/tools/definition-of-done" element={<DefinitionOfDonePage />} />
+          <Route path="/tools/decision-log" element={<DecisionLogPage />} />
+          <Route path="/tools/lessons-learned" element={<LessonsLearnedPage />} />
+          <Route path="/tools/escaped-defects" element={<EscapedDefectsPage />} />
+          <Route path="/tools/sprint-review-feedback" element={<SprintReviewCollectorPage />} />
           <Route path="*" element={<><Navbar /><NotFound /><Footer /></>} />
         </Routes>
       </BrowserRouter>
