@@ -26,6 +26,11 @@ import LeadTimeScatterPage from "./pages/LeadTimeScatterPage";
 import ValueStreamPage from "./pages/ValueStreamPage";
 import CycleVsLeadTimePage from "./pages/CycleVsLeadTimePage";
 import BlockerLogPage from "./pages/BlockerLogPage";
+import RACIChartPage from "./pages/RACIChartPage";
+import DependenciesMatrixPage from "./pages/DependenciesMatrixPage";
+import StakeholderSaliencePage from "./pages/StakeholderSaliencePage";
+import TeamHealthCheckPage from "./pages/TeamHealthCheckPage";
+import OKRTrackerPage from "./pages/OKRTrackerPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -58,6 +63,11 @@ const App = () => (
           <Route path="/tools/value-stream" element={<ValueStreamPage />} />
           <Route path="/tools/cycle-vs-lead" element={<CycleVsLeadTimePage />} />
           <Route path="/tools/blocker-log" element={<BlockerLogPage />} />
+          <Route path="/tools/raci" element={<RACIChartPage />} />
+          <Route path="/tools/dependencies" element={<DependenciesMatrixPage />} />
+          <Route path="/tools/stakeholder-salience" element={<StakeholderSaliencePage />} />
+          <Route path="/tools/team-health" element={<TeamHealthCheckPage />} />
+          <Route path="/tools/okr-tracker" element={<OKRTrackerPage />} />
           <Route path="*" element={<><Navbar /><NotFound /><Footer /></>} />
         </Routes>
       </BrowserRouter>

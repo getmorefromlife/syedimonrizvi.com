@@ -3,7 +3,7 @@ import {
   TrendingUp, LineChart, Users, ClipboardList, BarChart3,
   GitBranch, Calendar, AlertTriangle, CheckSquare,
   Shirt, Timer, HeartPulse, Layers, MessageSquare, Gauge,
-  ArrowRight, Clock,
+  ArrowRight, Clock, Target,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -31,10 +31,14 @@ const tools: ToolEntry[] = [
   { title: "Value Stream Mapping", desc: "Map end-to-end processes, measure process/wait time, and calculate flow efficiency.", icon: GitBranch, href: "/tools/value-stream", built: true },
   { title: "Cycle Time vs. Lead Time", desc: "Compare active working time against total delivery time to measure flow efficiency.", icon: Calendar, href: "/tools/cycle-vs-lead", built: true },
   { title: "Blockers & Impediments Log", desc: "Track, manage, and analyse blockers that slow down delivery.", icon: AlertTriangle, href: "/tools/blocker-log", built: true },
+  { title: "RACI Chart Generator", desc: "Define roles and responsibilities with Responsible, Accountable, Consulted, Informed.", icon: CheckSquare, href: "/tools/raci", built: true },
+  { title: "Dependencies Matrix", desc: "Map dependency relationships between work items — blocks, blocked-by, related.", icon: GitBranch, href: "/tools/dependencies", built: true },
+  { title: "Stakeholder Salience Model", desc: "Classify stakeholders by Power, Legitimacy, and Urgency to tailor engagement.", icon: Users, href: "/tools/stakeholder-salience", built: true },
+  { title: "Team Health Check", desc: "Run a radar health check across morale, workload, collaboration, and more.", icon: HeartPulse, href: "/tools/team-health", built: true },
+  { title: "OKR Tracker", desc: "Set Objectives and Key Results and track progress toward quarterly goals.", icon: Target, href: "/tools/okr-tracker", built: true },
   { title: "MoSCoW Prioritiser", desc: "Categorise requirements into Must / Should / Could / Won't have.", icon: CheckSquare, href: "/tools/moscow", built: false },
   { title: "T-Shirt Sizer", desc: "Convert t-shirt sizes (XS–XL) into rough story-point ranges.", icon: Shirt, href: "/tools/tshirt-sizer", built: false },
   { title: "Daily Standup Timer", desc: "Keep standups tight with per-person timeboxing and rounds.", icon: Timer, href: "/tools/standup-timer", built: false },
-  { title: "Team Health Check", desc: "Run a quick morale and health radar with your team.", icon: HeartPulse, href: "/tools/team-health", built: false },
   { title: "Epic Estimator", desc: "Break down epics into stories with bottom-up effort estimates.", icon: Layers, href: "/tools/epic-estimator", built: false },
   { title: "Retro Board", desc: "Structured retrospectives: what went well, what to improve, action items.", icon: MessageSquare, href: "/tools/retro-board", built: false },
   { title: "Throughput Run Chart", desc: "Track completed items per sprint to see delivery trends over time.", icon: Gauge, href: "/tools/throughput", built: false },

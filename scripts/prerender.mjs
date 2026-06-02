@@ -28,6 +28,11 @@ const ROUTES = [
   "/tools/value-stream",
   "/tools/cycle-vs-lead",
   "/tools/blocker-log",
+  "/tools/raci",
+  "/tools/dependencies",
+  "/tools/stakeholder-salience",
+  "/tools/team-health",
+  "/tools/okr-tracker",
 ];
 
 const MIME = {
