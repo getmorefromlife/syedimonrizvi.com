@@ -56,8 +56,8 @@ const WSJFCalculator = () => {
 
       {/* Score guide */}
       <div className="glass-card p-4 md:p-5">
-        <h2 className="font-serif font-semibold text-foreground text-sm mb-3">Score Guide</h2>
-        <div className="grid sm:grid-cols-3 gap-4 text-xs font-sans text-muted-foreground leading-relaxed">
+        <h2 className="font-serif font-semibold text-foreground text-base mb-3">Score Guide</h2>
+        <div className="grid sm:grid-cols-3 gap-4 text-base font-sans text-foreground/75 leading-relaxed">
           <div>
             <span className="text-gold-dark font-medium block mb-0.5">User-Business Value</span>
             1 = minimal value, 10 = critical revenue / user impact
@@ -76,17 +76,17 @@ const WSJFCalculator = () => {
       {/* Items */}
       <div className="glass-card p-5 md:p-6 space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="font-serif font-semibold text-foreground text-sm">Backlog Items</h2>
+          <h2 className="font-serif font-semibold text-foreground text-base">Backlog Items</h2>
           <button
             onClick={addItem}
-            className="flex items-center gap-1 text-xs font-medium text-gold-dark hover:text-gold transition-colors font-sans"
+            className="flex items-center gap-1 text-sm font-medium text-gold-dark hover:text-gold transition-colors font-sans"
           >
             <Plus size={14} /> Add Item
           </button>
         </div>
 
         {/* Header */}
-        <div className="hidden md:grid md:grid-cols-[1fr_70px_70px_70px_70px_70px_60px_30px] gap-3 text-[10px] uppercase tracking-wider text-muted-foreground/50 font-sans pb-1 border-b border-border/30">
+        <div className="hidden md:grid md:grid-cols-[1fr_70px_70px_70px_70px_70px_60px_30px] gap-3 text-sm uppercase tracking-wider text-foreground/70 font-sans pb-1 border-b border-border/30">
           <span>Name</span>
           <span className="text-center">UBV</span>
           <span className="text-center">TC</span>
@@ -108,7 +108,7 @@ const WSJFCalculator = () => {
               type="text"
               value={item.name}
               onChange={(e) => update(item.id, "name", e.target.value)}
-              className="bg-transparent border-b border-border/60 py-1 text-sm text-foreground font-sans placeholder:text-muted-foreground/40 focus:outline-none focus:border-gold/50 transition-colors"
+              className="bg-transparent border-b border-border/60 py-1 text-sm text-foreground font-sans placeholder:text-foreground/60 focus:outline-none focus:border-gold/50 transition-colors"
               placeholder="Item name"
             />
             <input
@@ -132,7 +132,7 @@ const WSJFCalculator = () => {
               className="w-full text-center bg-transparent border-b border-border/60 py-1 text-sm text-foreground font-mono focus:outline-none focus:border-gold/50 transition-colors"
               min="1" max="10"
             />
-            <div className="text-center text-sm font-mono text-muted-foreground">
+            <div className="text-center text-sm font-mono text-foreground/75">
               {item.cod}
             </div>
             <input
@@ -142,12 +142,12 @@ const WSJFCalculator = () => {
               className="w-full text-center bg-transparent border-b border-border/60 py-1 text-sm text-foreground font-mono focus:outline-none focus:border-gold/50 transition-colors"
               min="1"
             />
-            <div className={`text-center text-sm font-mono font-bold ${item.wsjf > 0 ? "gold-text" : "text-muted-foreground"}`}>
+            <div className={`text-center text-sm font-mono font-bold ${item.wsjf > 0 ? "gold-text" : "text-foreground/75"}`}>
               {item.wsjf > 0 ? item.wsjf.toFixed(1) : "—"}
             </div>
             <button
               onClick={() => removeItem(item.id)}
-              className="text-muted-foreground/30 hover:text-red-400 transition-colors justify-self-center"
+              className="text-foreground/50 hover:text-red-400 transition-colors justify-self-center"
               aria-label="Remove item"
             >
               <Trash2 size={13} />
@@ -156,7 +156,7 @@ const WSJFCalculator = () => {
         ))}
 
         {/* Mobile score labels */}
-        <div className="grid grid-cols-2 gap-2 text-[10px] text-muted-foreground/40 font-sans md:hidden">
+        <div className="grid grid-cols-2 gap-2 text-sm text-foreground/60 font-sans md:hidden">
           <span>UBV = User-Business Value</span>
           <span>TC = Time Criticality</span>
           <span>RR/OE = Risk Red. / Opp. Enable</span>
@@ -171,7 +171,7 @@ const WSJFCalculator = () => {
           animate={{ opacity: 1, y: 0 }}
           className="glass-card-strong p-5 md:p-6"
         >
-          <h2 className="font-serif font-semibold text-foreground text-sm mb-4">Priority Rank</h2>
+          <h2 className="font-serif font-semibold text-foreground text-base mb-4">Priority Rank</h2>
           <div className="space-y-2">
             {scored
               .filter((i) => i.name.trim())
@@ -180,19 +180,19 @@ const WSJFCalculator = () => {
                   key={item.id}
                   className="flex items-center gap-3 px-3 py-2 rounded-lg bg-background/50"
                 >
-                  <span className={`text-xs font-mono font-bold ${i === 0 ? "gold-text" : "text-muted-foreground/60"}`}>
+                  <span className={`text-sm font-mono font-bold ${i === 0 ? "gold-text" : "text-foreground/80"}`}>
                     #{i + 1}
                   </span>
-                  <ArrowUpDown size={12} className="text-muted-foreground/30 shrink-0" />
+                  <ArrowUpDown size={12} className="text-foreground/50 shrink-0" />
                   <span className="flex-1 text-sm text-foreground font-sans truncate">{item.name}</span>
-                  <span className="text-xs font-mono gold-text font-bold">{item.wsjf.toFixed(1)}</span>
+                  <span className="text-sm font-mono gold-text font-bold">{item.wsjf.toFixed(1)}</span>
                 </div>
               ))}
           </div>
         </motion.div>
       )}
 
-      <p className="text-center text-[10px] uppercase tracking-[0.25em] text-muted-foreground/30 font-sans pt-4">
+      <p className="text-center text-sm uppercase tracking-[0.25em] text-foreground/50 font-sans pt-4">
         Built by Syed Imon Rizvi — Qalb Studios
       </p>
     </ToolCard>

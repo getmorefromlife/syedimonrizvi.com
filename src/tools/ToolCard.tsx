@@ -20,7 +20,7 @@ const ToolCard = ({ title, subtitle, children }: Props) => (
           {title}
         </h1>
         {subtitle && (
-          <p className="text-muted-foreground font-sans text-sm max-w-lg mx-auto leading-relaxed">
+          <p className="text-foreground/75 font-sans text-base max-w-2xl mx-auto leading-relaxed">
             {subtitle}
           </p>
         )}

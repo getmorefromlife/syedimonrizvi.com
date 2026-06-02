@@ -36,6 +36,11 @@ import DecisionLogPage from "./pages/DecisionLogPage";
 import LessonsLearnedPage from "./pages/LessonsLearnedPage";
 import EscapedDefectsPage from "./pages/EscapedDefectsPage";
 import SprintReviewCollectorPage from "./pages/SprintReviewCollectorPage";
+import ImpactMappingPage from "./pages/ImpactMappingPage";
+import PersonaGeneratorPage from "./pages/PersonaGeneratorPage";
+import RoadmapTimelinePage from "./pages/RoadmapTimelinePage";
+import DORAMetricsPage from "./pages/DORAMetricsPage";
+import CommunicationPlanPage from "./pages/CommunicationPlanPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -78,6 +83,11 @@ const App = () => (
           <Route path="/tools/lessons-learned" element={<LessonsLearnedPage />} />
           <Route path="/tools/escaped-defects" element={<EscapedDefectsPage />} />
           <Route path="/tools/sprint-review-feedback" element={<SprintReviewCollectorPage />} />
+          <Route path="/tools/impact-mapping" element={<ImpactMappingPage />} />
+          <Route path="/tools/persona-generator" element={<PersonaGeneratorPage />} />
+          <Route path="/tools/roadmap-timeline" element={<RoadmapTimelinePage />} />
+          <Route path="/tools/dora-metrics" element={<DORAMetricsPage />} />
+          <Route path="/tools/communication-plan" element={<CommunicationPlanPage />} />
           <Route path="*" element={<><Navbar /><NotFound /><Footer /></>} />
         </Routes>
       </BrowserRouter>

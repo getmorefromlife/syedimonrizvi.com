@@ -25,7 +25,7 @@ const CAT_STYLES: Record<Category, string> = {
   tech: "bg-sky-500/10 border-sky-400/30 text-sky-500",
   people: "bg-emerald-500/10 border-emerald-400/30 text-emerald-500",
   tools: "bg-amber-500/10 border-amber-400/30 text-amber-500",
-  other: "bg-muted/20 border-border/40 text-muted-foreground",
+  other: "bg-muted/20 border-border/40 text-foreground/75",
 };
 
 const LessonsLearned = () => {
@@ -95,23 +95,23 @@ const LessonsLearned = () => {
         <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
           <div className="text-center p-2 rounded-lg bg-background/50">
             <p className="text-xl font-serif font-bold text-foreground">{stats.total}</p>
-            <p className="text-[10px] text-muted-foreground/50 font-sans">Total</p>
+            <p className="text-sm text-foreground/70 font-sans">Total</p>
           </div>
           <div className="text-center p-2 rounded-lg bg-background/50">
             <p className="text-xl font-serif font-bold text-emerald-500">{stats.done}</p>
-            <p className="text-[10px] text-muted-foreground/50 font-sans">Done</p>
+            <p className="text-sm text-foreground/70 font-sans">Done</p>
           </div>
           <div className="text-center p-2 rounded-lg bg-background/50">
             <p className="text-xl font-serif font-bold text-amber-500">{stats.inProgress}</p>
-            <p className="text-[10px] text-muted-foreground/50 font-sans">In Progress</p>
+            <p className="text-sm text-foreground/70 font-sans">In Progress</p>
           </div>
           <div className="text-center p-2 rounded-lg bg-background/50">
             <p className="text-xl font-serif font-bold text-red-400">{stats.open}</p>
-            <p className="text-[10px] text-muted-foreground/50 font-sans">Open</p>
+            <p className="text-sm text-foreground/70 font-sans">Open</p>
           </div>
           <div className="text-center p-2 rounded-lg bg-background/50">
             <p className="text-sm font-serif font-bold gold-text">{stats.total > 0 ? Math.round((stats.done / stats.total) * 100) : 0}%</p>
-            <p className="text-[10px] text-muted-foreground/50 font-sans">Resolution rate</p>
+            <p className="text-sm text-foreground/70 font-sans">Resolution rate</p>
           </div>
         </div>
       </div>
@@ -120,17 +120,17 @@ const LessonsLearned = () => {
       <div className="glass-card p-4 md:p-5">
         <div className="flex items-center gap-3 flex-wrap">
           <div className="flex items-center gap-1.5 flex-1 min-w-[160px]">
-            <Search size={14} className="text-muted-foreground/40 shrink-0" />
+            <Search size={14} className="text-foreground/60 shrink-0" />
             <input type="text" value={search} onChange={(e) => setSearch(e.target.value)}
-              className="flex-1 bg-transparent border-b border-border/60 py-1 text-sm text-foreground font-sans placeholder:text-muted-foreground/40 focus:outline-none focus:border-gold/50 transition-colors" placeholder="Search..." />
+              className="flex-1 bg-transparent border-b border-border/60 py-1 text-sm text-foreground font-sans placeholder:text-foreground/60 focus:outline-none focus:border-gold/50 transition-colors" placeholder="Search..." />
           </div>
-          <div className="flex items-center gap-1 text-xs font-sans">
+          <div className="flex items-center gap-1 text-sm font-sans">
             {(["all", "process", "tech", "people", "tools", "other"] as const).map((c) => (
               <button key={c} onClick={() => setFilterCat(c)}
-                className={`px-2 py-1 rounded-md capitalize transition-colors ${filterCat === c ? "bg-gold/15 text-gold-dark border border-gold/30" : "text-muted-foreground/50 hover:text-foreground"}`}>{c}</button>
+                className={`px-2 py-1 rounded-md capitalize transition-colors ${filterCat === c ? "bg-gold/15 text-gold-dark border border-gold/30" : "text-foreground/70 hover:text-foreground"}`}>{c}</button>
             ))}
           </div>
-          <button onClick={addLesson} className="flex items-center gap-1 text-xs font-medium text-gold-dark hover:text-gold transition-colors font-sans shrink-0">
+          <button onClick={addLesson} className="flex items-center gap-1 text-sm font-medium text-gold-dark hover:text-gold transition-colors font-sans shrink-0">
             <Plus size={14} /> Add Lesson
           </button>
         </div>
@@ -138,19 +138,19 @@ const LessonsLearned = () => {
 
       {/* Lessons */}
       <div className="glass-card p-4 md:p-5 space-y-3">
-        {filtered.length === 0 && <p className="text-center text-sm text-muted-foreground/50 font-sans py-8">No lessons recorded yet.</p>}
+        {filtered.length === 0 && <p className="text-center text-sm text-foreground/70 font-sans py-8">No lessons recorded yet.</p>}
         {filtered.map((l, i) => (
           <motion.div key={l.id} initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }}
             className="border border-border/40 rounded-xl p-4 space-y-3">
             <div className="flex items-start justify-between gap-3">
               <div className="flex items-center gap-2 flex-1 min-w-0">
-                <span className="text-xs text-muted-foreground/50 font-mono shrink-0">{String(i + 1).padStart(2, "0")}</span>
+                <span className="text-sm text-foreground/70 font-mono shrink-0">{String(i + 1).padStart(2, "0")}</span>
                 <input type="text" value={l.what} onChange={(e) => update(l.id, "what", e.target.value)}
-                  className="flex-1 bg-transparent border-b border-border/60 py-0.5 text-sm font-semibold text-foreground font-sans placeholder:text-muted-foreground/40 focus:outline-none focus:border-gold/50 transition-colors" placeholder="What happened?" />
+                  className="flex-1 bg-transparent border-b border-border/60 py-0.5 text-sm font-semibold text-foreground font-sans placeholder:text-foreground/60 focus:outline-none focus:border-gold/50 transition-colors" placeholder="What happened?" />
               </div>
               <div className="flex items-center gap-1.5 shrink-0">
                 <select value={l.category} onChange={(e) => update(l.id, "category", e.target.value)}
-                  className={`text-[10px] font-medium font-sans px-2 py-0.5 rounded-full border bg-transparent ${CAT_STYLES[l.category as Category] || ""}`}>
+                  className={`text-sm font-medium font-sans px-2 py-0.5 rounded-full border bg-transparent ${CAT_STYLES[l.category as Category] || ""}`}>
                   <option value="process">process</option>
                   <option value="tech">tech</option>
                   <option value="people">people</option>
@@ -158,33 +158,33 @@ const LessonsLearned = () => {
                   <option value="other">other</option>
                 </select>
                 <select value={l.status} onChange={(e) => update(l.id, "status", e.target.value)}
-                  className="text-[10px] font-sans bg-transparent border border-border/40 rounded px-1.5 py-0.5 text-muted-foreground">
+                  className="text-sm font-sans bg-transparent border border-border/40 rounded px-1.5 py-0.5 text-foreground/75">
                   <option value="open">open</option>
                   <option value="in-progress">in-progress</option>
                   <option value="done">done</option>
                 </select>
-                <button onClick={() => removeLesson(l.id)} className="text-muted-foreground/20 hover:text-red-400 transition-colors" aria-label="Remove"><Trash2 size={12} /></button>
+                <button onClick={() => removeLesson(l.id)} className="text-foreground/40 hover:text-red-400 transition-colors" aria-label="Remove"><Trash2 size={12} /></button>
               </div>
             </div>
 
             <div className="space-y-2">
               <textarea value={l.outcome} onChange={(e) => update(l.id, "outcome", e.target.value)}
-                className="w-full bg-transparent text-xs text-muted-foreground font-sans border-b border-transparent focus:border-gold/50 focus:outline-none transition-colors resize-none h-10" placeholder="What was the outcome / impact?" />
+                className="w-full bg-transparent text-sm text-foreground/75 font-sans border-b border-transparent focus:border-gold/50 focus:outline-none transition-colors resize-none h-10" placeholder="What was the outcome / impact?" />
               <div className="bg-gold/5 border border-gold/20 rounded-lg p-2.5">
-                <span className="text-[10px] uppercase tracking-wider text-gold-dark font-sans">Action Item</span>
+                <span className="text-sm uppercase tracking-wider text-gold-dark font-sans">Action Item</span>
                 <textarea value={l.action} onChange={(e) => update(l.id, "action", e.target.value)}
-                  className="w-full bg-transparent text-xs text-foreground font-sans mt-0.5 border-b border-transparent focus:border-gold/50 focus:outline-none transition-colors resize-none h-10" placeholder="What will you do about it?" />
+                  className="w-full bg-transparent text-sm text-foreground font-sans mt-0.5 border-b border-transparent focus:border-gold/50 focus:outline-none transition-colors resize-none h-10" placeholder="What will you do about it?" />
               </div>
-              <div className="flex gap-3 text-[11px] font-sans text-muted-foreground/60">
+              <div className="flex gap-3 text-sm font-sans text-foreground/80">
                 <div className="flex items-center gap-1">
                   <span>Owner:</span>
                   <input type="text" value={l.owner} onChange={(e) => update(l.id, "owner", e.target.value)}
-                    className="bg-transparent text-foreground font-sans text-[11px] border-b border-transparent focus:border-gold/50 focus:outline-none" placeholder="Name" />
+                    className="bg-transparent text-foreground font-sans text-sm border-b border-transparent focus:border-gold/50 focus:outline-none" placeholder="Name" />
                 </div>
                 <div className="flex items-center gap-1">
                   <span>Date:</span>
                   <input type="date" value={l.date} onChange={(e) => update(l.id, "date", e.target.value)}
-                    className="bg-transparent text-foreground font-mono text-[11px] border-b border-transparent focus:border-gold/50 focus:outline-none" />
+                    className="bg-transparent text-foreground font-mono text-sm border-b border-transparent focus:border-gold/50 focus:outline-none" />
                 </div>
               </div>
             </div>
@@ -194,8 +194,8 @@ const LessonsLearned = () => {
 
       {/* Category breakdown */}
       <div className="glass-card p-4 md:p-5">
-        <h2 className="font-serif font-semibold text-foreground text-sm mb-2">By Category</h2>
-        <div className="flex flex-wrap gap-2 text-xs font-sans">
+        <h2 className="font-serif font-semibold text-foreground text-base mb-2">By Category</h2>
+        <div className="flex flex-wrap gap-2 text-sm font-sans">
           {(Object.entries(stats.categories) as [Category, number][]).map(([cat, count]) => (
             <div key={cat} className={`px-2.5 py-1 rounded-md border ${CAT_STYLES[cat]}`}>
               {cat}: {count}
@@ -204,7 +204,7 @@ const LessonsLearned = () => {
         </div>
       </div>
 
-      <p className="text-center text-[10px] uppercase tracking-[0.25em] text-muted-foreground/30 font-sans pt-4">
+      <p className="text-center text-sm uppercase tracking-[0.25em] text-foreground/50 font-sans pt-4">
         Built by Syed Imon Rizvi — Qalb Studios
       </p>
     </ToolCard>

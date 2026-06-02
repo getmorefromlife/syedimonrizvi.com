@@ -104,7 +104,7 @@ const RACIChart = () => {
 
       <div className="flex flex-wrap gap-2 mb-4">
         {Object.entries(ROLE_DESC).map(([key, desc]) => (
-          <div key={key} className={`px-2.5 py-1 rounded-md text-[11px] font-medium font-sans border ${ROLE_STYLES[key]}`}>
+          <div key={key} className={`px-2.5 py-1 rounded-md text-sm font-medium font-sans border ${ROLE_STYLES[key]}`}>
             {key} — {desc}
           </div>
         ))}
@@ -113,18 +113,18 @@ const RACIChart = () => {
       {/* People row */}
       <div className="glass-card p-4 md:p-5 space-y-3 overflow-x-auto">
         <div className="flex items-center justify-between">
-          <h2 className="font-serif font-semibold text-foreground text-sm">People / Roles</h2>
-          <button onClick={addPerson} className="flex items-center gap-1 text-xs font-medium text-gold-dark hover:text-gold transition-colors font-sans">
+          <h2 className="font-serif font-semibold text-foreground text-base">People / Roles</h2>
+          <button onClick={addPerson} className="flex items-center gap-1 text-sm font-medium text-gold-dark hover:text-gold transition-colors font-sans">
             <Plus size={14} /> Add Person
           </button>
         </div>
         <div className="flex flex-wrap gap-2">
           {people.map((p, i) => (
             <div key={p.id} className="flex items-center gap-1.5 border border-border/40 rounded-lg px-3 py-1.5">
-              <span className="text-[10px] text-muted-foreground/40 font-mono">{String(i + 1)}</span>
+              <span className="text-sm text-foreground/60 font-mono">{String(i + 1)}</span>
               <input type="text" value={p.name} onChange={(e) => setPeople((prev) => prev.map((x) => x.id === p.id ? { ...x, name: e.target.value } : x))}
-                className="w-20 bg-transparent text-xs text-foreground font-sans border-b border-transparent focus:border-gold/50 focus:outline-none transition-colors" />
-              <button onClick={() => removePerson(p.id)} className="text-muted-foreground/20 hover:text-red-400 transition-colors" aria-label="Remove person">
+                className="w-20 bg-transparent text-sm text-foreground font-sans border-b border-transparent focus:border-gold/50 focus:outline-none transition-colors" />
+              <button onClick={() => removePerson(p.id)} className="text-foreground/40 hover:text-red-400 transition-colors" aria-label="Remove person">
                 <Trash2 size={10} />
               </button>
             </div>
@@ -135,24 +135,24 @@ const RACIChart = () => {
       {/* RACI Matrix */}
       <div className="glass-card p-4 md:p-5 overflow-x-auto">
         <div className="flex items-center justify-between mb-3">
-          <h2 className="font-serif font-semibold text-foreground text-sm">Matrix</h2>
-          <button onClick={addTask} className="flex items-center gap-1 text-xs font-medium text-gold-dark hover:text-gold transition-colors font-sans">
+          <h2 className="font-serif font-semibold text-foreground text-base">Matrix</h2>
+          <button onClick={addTask} className="flex items-center gap-1 text-sm font-medium text-gold-dark hover:text-gold transition-colors font-sans">
             <Plus size={14} /> Add Task
           </button>
         </div>
 
         {issues.length > 0 && (
-          <div className="mb-3 p-2 bg-red-500/5 border border-red-400/30 rounded-lg text-[11px] text-red-400 font-sans space-y-0.5">
+          <div className="mb-3 p-2 bg-red-500/5 border border-red-400/30 rounded-lg text-sm text-red-400 font-sans space-y-0.5">
             {issues.map((msg, i) => <p key={i}>{msg}</p>)}
           </div>
         )}
 
-        <table className="w-full text-xs font-sans border-collapse">
+        <table className="w-full text-sm font-sans border-collapse">
           <thead>
             <tr>
-              <th className="text-left text-[10px] text-muted-foreground/50 font-medium py-1.5 pr-3 sticky left-0 bg-background">Task</th>
+              <th className="text-left text-sm text-foreground/70 font-medium py-1.5 pr-3 sticky left-0 bg-background">Task</th>
               {people.map((p) => (
-                <th key={p.id} className="text-center text-[10px] text-muted-foreground/50 font-medium py-1.5 px-2 min-w-[48px]">{p.name}</th>
+                <th key={p.id} className="text-center text-sm text-foreground/70 font-medium py-1.5 px-2 min-w-[48px]">{p.name}</th>
               ))}
             </tr>
           </thead>
@@ -161,8 +161,8 @@ const RACIChart = () => {
               <tr key={t.id} className="border-t border-border/20">
                 <td className="py-1.5 pr-3 sticky left-0 bg-background">
                   <input type="text" value={t.name} onChange={(e) => setTasks((prev) => prev.map((x) => x.id === t.id ? { ...x, name: e.target.value } : x))}
-                    className="w-full bg-transparent text-xs text-foreground font-sans border-b border-transparent focus:border-gold/50 focus:outline-none transition-colors" />
-                  <button onClick={() => removeTask(t.id)} className="text-muted-foreground/20 hover:text-red-400 transition-colors ml-1" aria-label="Remove task">
+                    className="w-full bg-transparent text-sm text-foreground font-sans border-b border-transparent focus:border-gold/50 focus:outline-none transition-colors" />
+                  <button onClick={() => removeTask(t.id)} className="text-foreground/40 hover:text-red-400 transition-colors ml-1" aria-label="Remove task">
                     <Trash2 size={9} />
                   </button>
                 </td>
@@ -171,8 +171,8 @@ const RACIChart = () => {
                   return (
                     <td key={p.id} className="text-center py-1 px-1">
                       <button onClick={() => cycleRole(t.id, p.id)}
-                        className={`w-7 h-7 rounded-md text-[11px] font-bold font-mono border transition-all ${
-                          role ? ROLE_STYLES[role] : "border-border/30 text-muted-foreground/30 hover:border-muted-foreground/40"
+                        className={`w-7 h-7 rounded-md text-sm font-bold font-mono border transition-all ${
+                          role ? ROLE_STYLES[role] : "border-border/30 text-foreground/50 hover:border-muted-foreground/40"
                         }`}>
                         {role || "—"}
                       </button>
@@ -187,7 +187,7 @@ const RACIChart = () => {
 
       {/* Summary */}
       <div className="glass-card-strong p-4 md:p-5">
-        <h2 className="font-serif font-semibold text-foreground text-sm mb-3">Assignment Summary</h2>
+        <h2 className="font-serif font-semibold text-foreground text-base mb-3">Assignment Summary</h2>
         <div className="grid grid-cols-4 gap-3">
           {(["R", "A", "C", "I"] as const).map((role) => {
             const count = tasks.reduce((sum, t) =>
@@ -195,14 +195,14 @@ const RACIChart = () => {
             return (
               <div key={role} className="text-center p-2 rounded-lg bg-background/50">
                 <p className={`text-lg font-serif font-bold ${role === "R" ? "text-emerald-500" : role === "A" ? "gold-text" : role === "C" ? "text-sky-500" : "text-violet-500"}`}>{count}</p>
-                <p className="text-[10px] text-muted-foreground/50 font-sans">{role} assignments</p>
+                <p className="text-sm text-foreground/70 font-sans">{role} assignments</p>
               </div>
             );
           })}
         </div>
       </div>
 
-      <p className="text-center text-[10px] uppercase tracking-[0.25em] text-muted-foreground/30 font-sans pt-4">
+      <p className="text-center text-sm uppercase tracking-[0.25em] text-foreground/50 font-sans pt-4">
         Built by Syed Imon Rizvi — Qalb Studios
       </p>
     </ToolCard>

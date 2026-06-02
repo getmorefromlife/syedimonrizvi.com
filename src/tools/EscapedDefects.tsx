@@ -112,7 +112,7 @@ const EscapedDefects = () => {
             </ResponsiveContainer>
           </div>
           <div className="flex justify-center gap-2 mt-2">
-            <button onClick={exportPNG} className="flex items-center gap-1 text-[10px] text-muted-foreground/50 hover:text-gold-dark transition-colors font-sans">
+            <button onClick={exportPNG} className="flex items-center gap-1 text-sm text-foreground/70 hover:text-gold-dark transition-colors font-sans">
               <Download size={12} /> Export PNG
             </button>
           </div>
@@ -121,8 +121,8 @@ const EscapedDefects = () => {
         {/* Data */}
         <div className="glass-card p-4 md:p-5 space-y-2">
           <div className="flex items-center justify-between">
-            <h2 className="font-serif font-semibold text-foreground text-sm">Sprints</h2>
-            <button onClick={addPeriod} className="flex items-center gap-1 text-xs font-medium text-gold-dark hover:text-gold transition-colors font-sans">
+            <h2 className="font-serif font-semibold text-foreground text-base">Sprints</h2>
+            <button onClick={addPeriod} className="flex items-center gap-1 text-sm font-medium text-gold-dark hover:text-gold transition-colors font-sans">
               <Plus size={14} /> Add
             </button>
           </div>
@@ -130,11 +130,11 @@ const EscapedDefects = () => {
             {periods.map((p, i) => (
               <div key={p.id} className="flex items-center gap-1.5">
                 <input type="text" value={p.label} onChange={(e) => updatePeriod(p.id, "label", e.target.value)}
-                  className="w-16 bg-transparent text-[11px] text-foreground font-sans border-b border-transparent focus:border-gold/50 focus:outline-none transition-colors" />
+                  className="w-16 bg-transparent text-sm text-foreground font-sans border-b border-transparent focus:border-gold/50 focus:outline-none transition-colors" />
                 <input type="number" value={p.count} onChange={(e) => updatePeriod(p.id, "count", e.target.value)}
                   className="w-12 text-center bg-transparent border-b border-border/60 py-0.5 text-sm text-foreground font-mono focus:outline-none focus:border-gold/50 transition-colors" min="0" />
-                <span className="text-[10px] text-muted-foreground/30 font-sans">defects</span>
-                <button onClick={() => removePeriod(p.id)} className="text-muted-foreground/20 hover:text-red-400 transition-colors ml-auto" aria-label="Remove"><Trash2 size={10} /></button>
+                <span className="text-sm text-foreground/50 font-sans">defects</span>
+                <button onClick={() => removePeriod(p.id)} className="text-foreground/40 hover:text-red-400 transition-colors ml-auto" aria-label="Remove"><Trash2 size={10} /></button>
               </div>
             ))}
           </div>
@@ -144,31 +144,31 @@ const EscapedDefects = () => {
       {/* Stats */}
       {stats && (
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="glass-card-strong p-4 md:p-5">
-          <h2 className="font-serif font-semibold text-foreground text-sm mb-3">Quality Metrics</h2>
+          <h2 className="font-serif font-semibold text-foreground text-base mb-3">Quality Metrics</h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             <div className="text-center p-2 rounded-lg bg-background/50">
               <p className="text-xl font-serif font-bold text-foreground">{stats.total}</p>
-              <p className="text-[10px] text-muted-foreground/50 font-sans">Total Escaped</p>
+              <p className="text-sm text-foreground/70 font-sans">Total Escaped</p>
             </div>
             <div className="text-center p-2 rounded-lg bg-background/50">
               <p className="text-xl font-serif font-bold text-foreground">{stats.avg}</p>
-              <p className="text-[10px] text-muted-foreground/50 font-sans">Avg per Sprint</p>
+              <p className="text-sm text-foreground/70 font-sans">Avg per Sprint</p>
             </div>
             <div className="text-center p-2 rounded-lg bg-background/50">
               <p className="text-xl font-serif font-bold text-amber-500">{stats.max}</p>
-              <p className="text-[10px] text-muted-foreground/50 font-sans">Worst Sprint</p>
+              <p className="text-sm text-foreground/70 font-sans">Worst Sprint</p>
             </div>
             <div className="text-center p-2 rounded-lg bg-background/50">
               <p className={`text-xl font-serif font-bold ${stats.trend <= 0 ? "text-emerald-500" : "text-red-400"}`}>
                 {stats.trend > 0 ? `+${stats.trend}` : stats.trend}
               </p>
-              <p className="text-[10px] text-muted-foreground/50 font-sans">Recent Trend</p>
+              <p className="text-sm text-foreground/70 font-sans">Recent Trend</p>
             </div>
           </div>
         </motion.div>
       )}
 
-      <p className="text-center text-[10px] uppercase tracking-[0.25em] text-muted-foreground/30 font-sans pt-4">
+      <p className="text-center text-sm uppercase tracking-[0.25em] text-foreground/50 font-sans pt-4">
         Built by Syed Imon Rizvi — Qalb Studios
       </p>
     </ToolCard>

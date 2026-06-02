@@ -38,6 +38,11 @@ const ROUTES = [
   "/tools/lessons-learned",
   "/tools/escaped-defects",
   "/tools/sprint-review-feedback",
+  "/tools/impact-mapping",
+  "/tools/persona-generator",
+  "/tools/roadmap-timeline",
+  "/tools/dora-metrics",
+  "/tools/communication-plan",
 ];
 
 const MIME = {

@@ -85,12 +85,12 @@ const PlanningPoker = () => {
 
       {/* Cards reference */}
       <div className="glass-card p-5 md:p-6">
-        <h2 className="font-serif font-semibold text-foreground text-sm mb-3">Card Deck (Fibonacci sequence)</h2>
+        <h2 className="font-serif font-semibold text-foreground text-base mb-3">Card Deck (Fibonacci sequence)</h2>
         <div className="flex flex-wrap gap-2">
           {CARDS.map((c) => (
             <div
               key={String(c)}
-              className="w-12 h-16 md:w-14 md:h-18 rounded-lg bg-background border border-border/50 flex items-center justify-center text-xs font-mono text-muted-foreground"
+              className="w-12 h-16 md:w-14 md:h-18 rounded-lg bg-background border border-border/50 flex items-center justify-center text-sm font-mono text-foreground/75"
             >
               {c === Infinity ? "∞" : String(c)}
             </div>
@@ -101,7 +101,7 @@ const PlanningPoker = () => {
       {/* Players */}
       <div className="glass-card p-5 md:p-6 space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="font-serif font-semibold text-foreground text-sm">Players</h2>
+          <h2 className="font-serif font-semibold text-foreground text-base">Players</h2>
           <div className="flex items-center gap-2">
             {revealed && (
               <button
@@ -109,14 +109,14 @@ const PlanningPoker = () => {
                   setRevealed(false);
                   setPlayers((prev) => prev.map((p) => ({ ...p, card: null })));
                 }}
-                className="flex items-center gap-1 text-xs text-muted-foreground/50 hover:text-gold-dark transition-colors font-sans"
+                className="flex items-center gap-1 text-sm text-foreground/70 hover:text-gold-dark transition-colors font-sans"
               >
                 <RotateCcw size={12} /> Reset
               </button>
             )}
             <button
               onClick={addPlayer}
-              className="flex items-center gap-1 text-xs font-medium text-gold-dark hover:text-gold transition-colors font-sans"
+              className="flex items-center gap-1 text-sm font-medium text-gold-dark hover:text-gold transition-colors font-sans"
             >
               <Plus size={14} /> Add
             </button>
@@ -132,18 +132,18 @@ const PlanningPoker = () => {
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <span className="text-xs text-muted-foreground/50 font-mono">{String(i + 1).padStart(2, "0")}</span>
+                <span className="text-sm text-foreground/70 font-mono">{String(i + 1).padStart(2, "0")}</span>
                 <input
                   type="text"
                   value={player.name}
                   onChange={(e) => updateName(player.id, e.target.value)}
-                  className="bg-transparent border-b border-border/60 py-0.5 text-sm text-foreground font-sans placeholder:text-muted-foreground/40 focus:outline-none focus:border-gold/50 transition-colors max-w-[140px]"
+                  className="bg-transparent border-b border-border/60 py-0.5 text-sm text-foreground font-sans placeholder:text-foreground/60 focus:outline-none focus:border-gold/50 transition-colors max-w-[140px]"
                   placeholder="Name"
                 />
               </div>
               <button
                 onClick={() => removePlayer(player.id)}
-                className="text-muted-foreground/30 hover:text-red-400 transition-colors"
+                className="text-foreground/50 hover:text-red-400 transition-colors"
                 aria-label="Remove player"
               >
                 <Trash2 size={13} />
@@ -158,12 +158,12 @@ const PlanningPoker = () => {
                     key={String(c)}
                     onClick={() => selectCard(player.id, c)}
                     disabled={revealed}
-                    className={`w-10 h-13 md:w-11 md:h-14 rounded-lg text-xs font-mono transition-all ${
+                    className={`w-10 h-13 md:w-11 md:h-14 rounded-lg text-sm font-mono transition-all ${
                       revealed && selected
                         ? "bg-gold/20 border-gold border-2 text-gold-dark font-bold"
                         : selected
                           ? "bg-gold/15 border-gold border-2 text-gold-dark font-bold"
-                          : "bg-background border border-border/40 text-muted-foreground hover:border-muted-foreground/40"
+                          : "bg-background border border-border/40 text-foreground/75 hover:border-muted-foreground/40"
                     } ${revealed ? "cursor-default" : "cursor-pointer"}`}
                   >
                     {c === Infinity ? "∞" : c === "?" ? "?" : String(c)}
@@ -182,10 +182,10 @@ const PlanningPoker = () => {
             <button
               onClick={() => setRevealed(true)}
               disabled={!hasAllSelected}
-              className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium font-sans transition-all ${
+              className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium font-sans transition-all ${
                 hasAllSelected
                   ? "bg-gold/15 text-gold-dark border border-gold/30 hover:bg-gold/25"
-                  : "bg-muted/20 text-muted-foreground/40 border border-border/30 cursor-not-allowed"
+                  : "bg-muted/20 text-foreground/60 border border-border/30 cursor-not-allowed"
               }`}
             >
               <Eye size={14} /> Reveal Cards
@@ -196,13 +196,13 @@ const PlanningPoker = () => {
                 setRevealed(false);
                 setPlayers((prev) => prev.map((p) => ({ ...p, card: null })));
               }}
-              className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium font-sans bg-muted/20 text-muted-foreground border border-border/40 hover:bg-muted/30 transition-all"
+              className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium font-sans bg-muted/20 text-foreground/75 border border-border/40 hover:bg-muted/30 transition-all"
             >
               <EyeOff size={14} /> New Round
             </button>
           )}
           {!hasAllSelected && !revealed && (
-            <span className="text-[10px] text-muted-foreground/40 font-sans">
+            <span className="text-sm text-foreground/60 font-sans">
               Waiting for all players to select
             </span>
           )}
@@ -215,32 +215,32 @@ const PlanningPoker = () => {
             className="grid grid-cols-2 sm:grid-cols-5 gap-3 pt-2 border-t border-border/30"
           >
             <div className="text-center">
-              <p className="text-[10px] uppercase tracking-wider text-muted-foreground/50 font-sans">Average</p>
+              <p className="text-sm uppercase tracking-wider text-foreground/70 font-sans">Average</p>
               <p className="text-lg font-serif font-bold gold-text">{stats.avg.toFixed(1)}</p>
             </div>
             <div className="text-center">
-              <p className="text-[10px] uppercase tracking-wider text-muted-foreground/50 font-sans">Median</p>
+              <p className="text-sm uppercase tracking-wider text-foreground/70 font-sans">Median</p>
               <p className="text-lg font-serif font-bold text-foreground">{stats.median}</p>
             </div>
             <div className="text-center">
-              <p className="text-[10px] uppercase tracking-wider text-muted-foreground/50 font-sans">Mode</p>
+              <p className="text-sm uppercase tracking-wider text-foreground/70 font-sans">Mode</p>
               <p className="text-lg font-serif font-bold text-foreground">
-                {stats.mode} <span className="text-xs text-muted-foreground/50">({stats.modeCount}x)</span>
+                {stats.mode} <span className="text-sm text-foreground/70">({stats.modeCount}x)</span>
               </p>
             </div>
             <div className="text-center">
-              <p className="text-[10px] uppercase tracking-wider text-muted-foreground/50 font-sans">Min</p>
+              <p className="text-sm uppercase tracking-wider text-foreground/70 font-sans">Min</p>
               <p className="text-lg font-serif font-bold text-foreground">{stats.min}</p>
             </div>
             <div className="text-center">
-              <p className="text-[10px] uppercase tracking-wider text-muted-foreground/50 font-sans">Max</p>
+              <p className="text-sm uppercase tracking-wider text-foreground/70 font-sans">Max</p>
               <p className="text-lg font-serif font-bold text-foreground">{stats.max}</p>
             </div>
           </motion.div>
         )}
       </div>
 
-      <p className="text-center text-[10px] uppercase tracking-[0.25em] text-muted-foreground/30 font-sans pt-4">
+      <p className="text-center text-sm uppercase tracking-[0.25em] text-foreground/50 font-sans pt-4">
         Built by Syed Imon Rizvi — Qalb Studios
       </p>
     </ToolCard>

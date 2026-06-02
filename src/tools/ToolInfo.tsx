@@ -25,7 +25,7 @@ const ToolInfo = ({ what, why, how, sections }: Props) => {
       >
         <div className="flex items-center gap-2.5">
           <BookOpen size={16} className="text-gold-dark shrink-0" />
-          <span className="font-serif font-semibold text-foreground text-sm">
+          <span className="font-serif font-semibold text-foreground text-base">
             What is this?
           </span>
         </div>
@@ -33,7 +33,7 @@ const ToolInfo = ({ what, why, how, sections }: Props) => {
           animate={{ rotate: open ? 180 : 0 }}
           transition={{ duration: 0.2 }}
         >
-          <ChevronDown size={16} className="text-muted-foreground/60" />
+          <ChevronDown size={16} className="text-foreground/80" />
         </motion.div>
       </button>
 
@@ -48,32 +48,32 @@ const ToolInfo = ({ what, why, how, sections }: Props) => {
           >
             <div className="pt-4 space-y-4 border-t border-border/40 mt-3">
               <div>
-                <span className="text-[10px] uppercase tracking-wider text-gold-dark font-sans font-medium">
+                <span className="text-base uppercase tracking-wider text-gold-dark font-sans font-medium">
                   What it is
                 </span>
-                <p className="text-sm text-muted-foreground font-sans leading-relaxed mt-1">{what}</p>
+                <p className="text-base text-foreground/80 font-sans leading-relaxed mt-1">{what}</p>
               </div>
               <div>
-                <span className="text-[10px] uppercase tracking-wider text-gold-dark font-sans font-medium">
+                <span className="text-base uppercase tracking-wider text-gold-dark font-sans font-medium">
                   When to use it
                 </span>
-                <p className="text-sm text-muted-foreground font-sans leading-relaxed mt-1">{why}</p>
+                <p className="text-base text-foreground/80 font-sans leading-relaxed mt-1">{why}</p>
               </div>
               <div>
-                <span className="text-[10px] uppercase tracking-wider text-gold-dark font-sans font-medium">
+                <span className="text-base uppercase tracking-wider text-gold-dark font-sans font-medium">
                   How to use it
                 </span>
-                <p className="text-sm text-muted-foreground font-sans leading-relaxed mt-1">{how}</p>
+                <p className="text-base text-foreground/80 font-sans leading-relaxed mt-1">{how}</p>
               </div>
 
               {sections && sections.length > 0 && (
                 <div className="border-t border-border/30 pt-3 space-y-3">
                   {sections.map((s) => (
                     <div key={s.title}>
-                      <span className="text-[10px] uppercase tracking-wider text-gold-dark font-sans font-medium">
+                      <span className="text-base uppercase tracking-wider text-gold-dark font-sans font-medium">
                         {s.title}
                       </span>
-                      <p className="text-sm text-muted-foreground font-sans leading-relaxed mt-1">{s.content}</p>
+                      <p className="text-base text-foreground/80 font-sans leading-relaxed mt-1">{s.content}</p>
                     </div>
                   ))}
                 </div>

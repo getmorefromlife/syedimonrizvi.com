@@ -120,10 +120,10 @@ const CycleVsLeadTime = () => {
         {/* Data entry */}
         <div className="glass-card p-4 md:p-5 space-y-3">
           <div className="flex items-center justify-between">
-            <h2 className="font-serif font-semibold text-foreground text-sm">Items</h2>
+            <h2 className="font-serif font-semibold text-foreground text-base">Items</h2>
             <button
               onClick={addItem}
-              className="flex items-center gap-1 text-xs font-medium text-gold-dark hover:text-gold transition-colors font-sans"
+              className="flex items-center gap-1 text-sm font-medium text-gold-dark hover:text-gold transition-colors font-sans"
             >
               <Plus size={14} /> Add
             </button>
@@ -133,17 +133,17 @@ const CycleVsLeadTime = () => {
             {items.map((item, i) => (
               <div key={item.id} className="border border-border/40 rounded-lg p-2.5 space-y-1.5">
                 <div className="flex items-center gap-1.5">
-                  <span className="text-[10px] text-muted-foreground/40 font-mono">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="text-sm text-foreground/60 font-mono">{String(i + 1).padStart(2, "0")}</span>
                   <input
                     type="text"
                     value={item.name}
                     onChange={(e) => updateItem(item.id, "name", e.target.value)}
-                    className="flex-1 bg-transparent border-b border-border/60 py-0.5 text-xs text-foreground font-sans placeholder:text-muted-foreground/40 focus:outline-none focus:border-gold/50 transition-colors"
+                    className="flex-1 bg-transparent border-b border-border/60 py-0.5 text-sm text-foreground font-sans placeholder:text-foreground/60 focus:outline-none focus:border-gold/50 transition-colors"
                     placeholder="Name"
                   />
                   <button
                     onClick={() => removeItem(item.id)}
-                    className="text-muted-foreground/20 hover:text-red-400 transition-colors"
+                    className="text-foreground/40 hover:text-red-400 transition-colors"
                     aria-label="Remove"
                   >
                     <Trash2 size={10} />
@@ -151,24 +151,24 @@ const CycleVsLeadTime = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   <div>
-                    <label className="block text-[9px] text-muted-foreground/50 font-sans">Cycle (d)</label>
+                    <label className="block text-[9px] text-foreground/70 font-sans">Cycle (d)</label>
                     <input
                       type="number"
                       value={item.cycleTime}
                       onChange={(e) => updateItem(item.id, "cycleTime", e.target.value)}
-                      className="w-full bg-transparent border-b border-border/60 py-0.5 text-xs text-foreground font-mono focus:outline-none focus:border-gold/50 transition-colors"
+                      className="w-full bg-transparent border-b border-border/60 py-0.5 text-sm text-foreground font-mono focus:outline-none focus:border-gold/50 transition-colors"
                       placeholder="0"
                       min="0"
                       step="0.5"
                     />
                   </div>
                   <div>
-                    <label className="block text-[9px] text-muted-foreground/50 font-sans">Lead (d)</label>
+                    <label className="block text-[9px] text-foreground/70 font-sans">Lead (d)</label>
                     <input
                       type="number"
                       value={item.leadTime}
                       onChange={(e) => updateItem(item.id, "leadTime", e.target.value)}
-                      className="w-full bg-transparent border-b border-border/60 py-0.5 text-xs text-foreground font-mono focus:outline-none focus:border-gold/50 transition-colors"
+                      className="w-full bg-transparent border-b border-border/60 py-0.5 text-sm text-foreground font-mono focus:outline-none focus:border-gold/50 transition-colors"
                       placeholder="0"
                       min="0"
                       step="0.5"
@@ -188,22 +188,22 @@ const CycleVsLeadTime = () => {
           animate={{ opacity: 1, y: 0 }}
           className="glass-card-strong p-5 md:p-6"
         >
-          <h2 className="font-serif font-semibold text-foreground text-sm mb-3">Flow Summary</h2>
+          <h2 className="font-serif font-semibold text-foreground text-base mb-3">Flow Summary</h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             <div className="text-center p-3 rounded-lg bg-background/50">
-              <p className="text-[10px] text-muted-foreground/50 font-sans">Avg Cycle Time</p>
+              <p className="text-sm text-foreground/70 font-sans">Avg Cycle Time</p>
               <p className="text-lg font-serif font-bold text-emerald-500">{stats.avgCycle.toFixed(1)}d</p>
             </div>
             <div className="text-center p-3 rounded-lg bg-background/50">
-              <p className="text-[10px] text-muted-foreground/50 font-sans">Avg Lead Time</p>
+              <p className="text-sm text-foreground/70 font-sans">Avg Lead Time</p>
               <p className="text-lg font-serif font-bold text-foreground">{stats.avgLead.toFixed(1)}d</p>
             </div>
             <div className="text-center p-3 rounded-lg bg-background/50">
-              <p className="text-[10px] text-muted-foreground/50 font-sans">Avg Wait Time</p>
+              <p className="text-sm text-foreground/70 font-sans">Avg Wait Time</p>
               <p className="text-lg font-serif font-bold text-amber-500">{stats.avgWait.toFixed(1)}d</p>
             </div>
             <div className="text-center p-3 rounded-lg bg-background/50">
-              <p className="text-[10px] text-muted-foreground/50 font-sans">Flow Efficiency</p>
+              <p className="text-sm text-foreground/70 font-sans">Flow Efficiency</p>
               <p className={`text-lg font-serif font-bold ${stats.efficiency > 40 ? "text-emerald-500" : stats.efficiency > 20 ? "text-amber-500" : "text-red-400"}`}>
                 {stats.efficiency.toFixed(1)}%
               </p>
@@ -212,7 +212,7 @@ const CycleVsLeadTime = () => {
         </motion.div>
       )}
 
-      <p className="text-center text-[10px] uppercase tracking-[0.25em] text-muted-foreground/30 font-sans pt-4">
+      <p className="text-center text-sm uppercase tracking-[0.25em] text-foreground/50 font-sans pt-4">
         Built by Syed Imon Rizvi — Qalb Studios
       </p>
     </ToolCard>

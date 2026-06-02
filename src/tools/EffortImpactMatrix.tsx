@@ -93,10 +93,10 @@ const EffortImpactMatrix = () => {
                     key={q.label}
                     className={`${bgColors[q.label]} border border-border/20 flex flex-col items-center justify-center p-2`}
                   >
-                    <span className={`text-[10px] font-bold ${q.color} font-sans text-center leading-tight`}>
+                    <span className={`text-sm font-bold ${q.color} font-sans text-center leading-tight`}>
                       {q.label}
                     </span>
-                    <span className="text-[8px] text-muted-foreground/50 font-sans text-center mt-0.5 hidden sm:block">
+                    <span className="text-[8px] text-foreground/70 font-sans text-center mt-0.5 hidden sm:block">
                       {q.desc}
                     </span>
                   </div>
@@ -105,10 +105,10 @@ const EffortImpactMatrix = () => {
             </div>
 
             {/* Axes labels */}
-            <div className="absolute -left-10 top-1/2 -translate-y-1/2 -rotate-90 text-[10px] uppercase tracking-wider text-muted-foreground/50 font-sans">
+            <div className="absolute -left-10 top-1/2 -translate-y-1/2 -rotate-90 text-sm uppercase tracking-wider text-foreground/70 font-sans">
               Impact →
             </div>
-            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-wider text-muted-foreground/50 font-sans">
+            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-sm uppercase tracking-wider text-foreground/70 font-sans">
               Effort →
             </div>
 
@@ -125,7 +125,7 @@ const EffortImpactMatrix = () => {
                   <span className="text-[9px] font-bold text-background font-sans">
                     {item.name.charAt(0).toUpperCase()}
                   </span>
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 bg-foreground text-background text-[10px] font-sans px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 bg-foreground text-background text-sm font-sans px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
                     {item.name}
                   </div>
                 </div>
@@ -136,10 +136,10 @@ const EffortImpactMatrix = () => {
         {/* Form */}
         <div className="glass-card p-4 md:p-5 space-y-3">
           <div className="flex items-center justify-between">
-            <h2 className="font-serif font-semibold text-foreground text-sm">Items</h2>
+            <h2 className="font-serif font-semibold text-foreground text-base">Items</h2>
             <button
               onClick={addItem}
-              className="flex items-center gap-1 text-xs font-medium text-gold-dark hover:text-gold transition-colors font-sans"
+              className="flex items-center gap-1 text-sm font-medium text-gold-dark hover:text-gold transition-colors font-sans"
             >
               <Plus size={14} /> Add
             </button>
@@ -153,17 +153,17 @@ const EffortImpactMatrix = () => {
               className="border border-border/40 rounded-lg p-3 space-y-2"
             >
               <div className="flex items-center gap-2">
-                <span className="text-xs text-muted-foreground/50 font-mono">{String(i + 1).padStart(2, "0")}</span>
+                <span className="text-sm text-foreground/70 font-mono">{String(i + 1).padStart(2, "0")}</span>
                 <input
                   type="text"
                   value={item.name}
                   onChange={(e) => update(item.id, "name", e.target.value)}
-                  className="flex-1 bg-transparent border-b border-border/60 py-0.5 text-sm text-foreground font-sans placeholder:text-muted-foreground/40 focus:outline-none focus:border-gold/50 transition-colors"
+                  className="flex-1 bg-transparent border-b border-border/60 py-0.5 text-sm text-foreground font-sans placeholder:text-foreground/60 focus:outline-none focus:border-gold/50 transition-colors"
                   placeholder="Item name"
                 />
                 <button
                   onClick={() => removeItem(item.id)}
-                  className="text-muted-foreground/30 hover:text-red-400 transition-colors"
+                  className="text-foreground/50 hover:text-red-400 transition-colors"
                   aria-label="Remove"
                 >
                   <Trash2 size={12} />
@@ -171,7 +171,7 @@ const EffortImpactMatrix = () => {
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[10px] uppercase tracking-wider text-muted-foreground/50 font-sans mb-0.5">
+                  <label className="block text-sm uppercase tracking-wider text-foreground/70 font-sans mb-0.5">
                     Effort: {item.effort}
                   </label>
                   <input
@@ -183,7 +183,7 @@ const EffortImpactMatrix = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] uppercase tracking-wider text-muted-foreground/50 font-sans mb-0.5">
+                  <label className="block text-sm uppercase tracking-wider text-foreground/70 font-sans mb-0.5">
                     Impact: {item.impact}
                   </label>
                   <input
@@ -196,7 +196,7 @@ const EffortImpactMatrix = () => {
                 </div>
               </div>
               {item.name.trim() && (
-                <p className={`text-[10px] font-medium font-sans ${getQuadrant(item.effort, item.impact).color}`}>
+                <p className={`text-sm font-medium font-sans ${getQuadrant(item.effort, item.impact).color}`}>
                   → {getQuadrant(item.effort, item.impact).label}
                 </p>
               )}
@@ -212,15 +212,15 @@ const EffortImpactMatrix = () => {
           animate={{ opacity: 1, y: 0 }}
           className="glass-card-strong p-5 md:p-6"
         >
-          <h2 className="font-serif font-semibold text-foreground text-sm mb-3">Distribution</h2>
+          <h2 className="font-serif font-semibold text-foreground text-base mb-3">Distribution</h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {QUADRANTS.map((q) => {
               const count = grouped[q.label].length;
               return (
                 <div key={q.label} className="text-center p-3 rounded-lg bg-background/50">
-                  <p className={`text-xs font-bold ${q.color} font-sans`}>{q.label}</p>
+                  <p className={`text-sm font-bold ${q.color} font-sans`}>{q.label}</p>
                   <p className="text-2xl font-serif font-bold text-foreground mt-1">{count}</p>
-                  <p className="text-[10px] text-muted-foreground/50 font-sans">items</p>
+                  <p className="text-sm text-foreground/70 font-sans">items</p>
                 </div>
               );
             })}
@@ -228,7 +228,7 @@ const EffortImpactMatrix = () => {
         </motion.div>
       )}
 
-      <p className="text-center text-[10px] uppercase tracking-[0.25em] text-muted-foreground/30 font-sans pt-4">
+      <p className="text-center text-sm uppercase tracking-[0.25em] text-foreground/50 font-sans pt-4">
         Built by Syed Imon Rizvi — Qalb Studios
       </p>
     </ToolCard>

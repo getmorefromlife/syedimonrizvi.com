@@ -33,7 +33,7 @@ const TYPE_STYLES: Record<FeedbackType, string> = {
 };
 
 const PRIORITY_STYLES: Record<Priority, string> = {
-  low: "text-muted-foreground/60",
+  low: "text-foreground/80",
   medium: "text-amber-500",
   high: "text-red-400",
 };
@@ -88,19 +88,19 @@ const SprintReviewCollector = () => {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           <div className="text-center p-2 rounded-lg bg-background/50">
             <p className="text-xl font-serif font-bold text-foreground">{stats.total}</p>
-            <p className="text-[10px] text-muted-foreground/50 font-sans">Total</p>
+            <p className="text-sm text-foreground/70 font-sans">Total</p>
           </div>
           <div className="text-center p-2 rounded-lg bg-background/50">
             <p className="text-xl font-serif font-bold text-emerald-500">{stats.positive}</p>
-            <p className="text-[10px] text-muted-foreground/50 font-sans">Positive</p>
+            <p className="text-sm text-foreground/70 font-sans">Positive</p>
           </div>
           <div className="text-center p-2 rounded-lg bg-background/50">
             <p className="text-xl font-serif font-bold text-amber-500">{stats.improvement}</p>
-            <p className="text-[10px] text-muted-foreground/50 font-sans">Improvements</p>
+            <p className="text-sm text-foreground/70 font-sans">Improvements</p>
           </div>
           <div className="text-center p-2 rounded-lg bg-background/50">
             <p className="text-xl font-serif font-bold text-sky-500">{stats.question}</p>
-            <p className="text-[10px] text-muted-foreground/50 font-sans">Questions</p>
+            <p className="text-sm text-foreground/70 font-sans">Questions</p>
           </div>
         </div>
       </div>
@@ -108,13 +108,13 @@ const SprintReviewCollector = () => {
       {/* Controls */}
       <div className="glass-card p-4 md:p-5">
         <div className="flex items-center gap-3 flex-wrap">
-          <div className="flex items-center gap-1 text-xs font-sans">
+          <div className="flex items-center gap-1 text-sm font-sans">
             {(["all", "positive", "improvement", "question"] as const).map((t) => (
               <button key={t} onClick={() => setFilterType(t)}
-                className={`px-2.5 py-1 rounded-md capitalize transition-colors ${filterType === t ? "bg-gold/15 text-gold-dark border border-gold/30" : "text-muted-foreground/50 hover:text-foreground"}`}>{t}</button>
+                className={`px-2.5 py-1 rounded-md capitalize transition-colors ${filterType === t ? "bg-gold/15 text-gold-dark border border-gold/30" : "text-foreground/70 hover:text-foreground"}`}>{t}</button>
             ))}
           </div>
-          <button onClick={addFeedback} className="flex items-center gap-1 text-xs font-medium text-gold-dark hover:text-gold transition-colors font-sans shrink-0 ml-auto">
+          <button onClick={addFeedback} className="flex items-center gap-1 text-sm font-medium text-gold-dark hover:text-gold transition-colors font-sans shrink-0 ml-auto">
             <Plus size={14} /> Add Feedback
           </button>
         </div>
@@ -122,7 +122,7 @@ const SprintReviewCollector = () => {
 
       {/* Feedback list */}
       <div className="glass-card p-4 md:p-5 space-y-3">
-        {filtered.length === 0 && <p className="text-center text-sm text-muted-foreground/50 font-sans py-8">No feedback captured yet.</p>}
+        {filtered.length === 0 && <p className="text-center text-sm text-foreground/70 font-sans py-8">No feedback captured yet.</p>}
         {filtered.map((f, i) => {
           const Icon = TYPE_ICONS[f.type];
           return (
@@ -130,23 +130,23 @@ const SprintReviewCollector = () => {
               className={`border rounded-xl p-4 space-y-3 ${f.type === "positive" ? "border-emerald-400/20" : f.type === "improvement" ? "border-amber-400/20" : "border-sky-400/20"}`}>
               <div className="flex items-start justify-between gap-3">
                 <div className="flex items-center gap-2 flex-1 min-w-0">
-                  <Icon size={16} className={TYPE_STYLES[f.type].split(" ")[2] || "text-muted-foreground"} />
-                  <span className="text-xs text-muted-foreground/50 font-mono shrink-0">#{String(i + 1).padStart(2, "0")}</span>
-                  <span className={`text-[10px] font-medium font-sans px-2 py-0.5 rounded-full border ${TYPE_STYLES[f.type]}`}>{f.type}</span>
+                  <Icon size={16} className={TYPE_STYLES[f.type].split(" ")[2] || "text-foreground/75"} />
+                  <span className="text-sm text-foreground/70 font-mono shrink-0">#{String(i + 1).padStart(2, "0")}</span>
+                  <span className={`text-sm font-medium font-sans px-2 py-0.5 rounded-full border ${TYPE_STYLES[f.type]}`}>{f.type}</span>
                   <select value={f.priority} onChange={(e) => update(f.id, "priority", e.target.value)}
-                    className={`text-[10px] font-sans bg-transparent border border-border/30 rounded px-1.5 py-0.5 ${PRIORITY_STYLES[f.priority as Priority]}`}>
+                    className={`text-sm font-sans bg-transparent border border-border/30 rounded px-1.5 py-0.5 ${PRIORITY_STYLES[f.priority as Priority]}`}>
                     <option value="low">low</option>
                     <option value="medium">medium</option>
                     <option value="high">high</option>
                   </select>
                 </div>
-                <button onClick={() => removeFeedback(f.id)} className="text-muted-foreground/20 hover:text-red-400 transition-colors shrink-0" aria-label="Remove"><Trash2 size={12} /></button>
+                <button onClick={() => removeFeedback(f.id)} className="text-foreground/40 hover:text-red-400 transition-colors shrink-0" aria-label="Remove"><Trash2 size={12} /></button>
               </div>
 
               <textarea value={f.text} onChange={(e) => update(f.id, "text", e.target.value)}
                 className="w-full bg-transparent text-sm text-foreground font-sans border-b border-transparent focus:border-gold/50 focus:outline-none transition-colors resize-none h-14" placeholder="What was the feedback?" />
 
-              <div className="flex flex-wrap gap-3 text-[11px] font-sans text-muted-foreground/60">
+              <div className="flex flex-wrap gap-3 text-sm font-sans text-foreground/80">
                 <div className="flex items-center gap-1">
                   <span>Source:</span>
                   <input type="text" value={f.source} onChange={(e) => update(f.id, "source", e.target.value)}
@@ -166,9 +166,9 @@ const SprintReviewCollector = () => {
 
               {f.type === "improvement" && (
                 <div className="bg-gold/5 border border-gold/20 rounded-lg p-2.5">
-                  <span className="text-[10px] uppercase tracking-wider text-gold-dark font-sans">Action Item</span>
+                  <span className="text-sm uppercase tracking-wider text-gold-dark font-sans">Action Item</span>
                   <input type="text" value={f.actionItem} onChange={(e) => update(f.id, "actionItem", e.target.value)}
-                    className="w-full bg-transparent text-xs text-foreground font-sans mt-0.5 border-b border-transparent focus:border-gold/50 focus:outline-none transition-colors" placeholder="What will we do about this?" />
+                    className="w-full bg-transparent text-sm text-foreground font-sans mt-0.5 border-b border-transparent focus:border-gold/50 focus:outline-none transition-colors" placeholder="What will we do about this?" />
                 </div>
               )}
             </motion.div>
@@ -176,7 +176,7 @@ const SprintReviewCollector = () => {
         })}
       </div>
 
-      <p className="text-center text-[10px] uppercase tracking-[0.25em] text-muted-foreground/30 font-sans pt-4">
+      <p className="text-center text-sm uppercase tracking-[0.25em] text-foreground/50 font-sans pt-4">
         Built by Syed Imon Rizvi — Qalb Studios
       </p>
     </ToolCard>

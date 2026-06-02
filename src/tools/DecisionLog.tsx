@@ -86,19 +86,19 @@ const DecisionLog = () => {
         <div className="grid grid-cols-4 gap-3">
           <div className="text-center p-2 rounded-lg bg-background/50">
             <p className="text-xl font-serif font-bold text-foreground">{stats.total}</p>
-            <p className="text-[10px] text-muted-foreground/50 font-sans">Total</p>
+            <p className="text-sm text-foreground/70 font-sans">Total</p>
           </div>
           <div className="text-center p-2 rounded-lg bg-background/50">
             <p className="text-xl font-serif font-bold text-emerald-500">{stats.accepted}</p>
-            <p className="text-[10px] text-muted-foreground/50 font-sans">Accepted</p>
+            <p className="text-sm text-foreground/70 font-sans">Accepted</p>
           </div>
           <div className="text-center p-2 rounded-lg bg-background/50">
             <p className="text-xl font-serif font-bold text-sky-500">{stats.proposed}</p>
-            <p className="text-[10px] text-muted-foreground/50 font-sans">Proposed</p>
+            <p className="text-sm text-foreground/70 font-sans">Proposed</p>
           </div>
           <div className="text-center p-2 rounded-lg bg-background/50">
             <p className="text-xl font-serif font-bold text-red-400">{stats.deprecated}</p>
-            <p className="text-[10px] text-muted-foreground/50 font-sans">Deprecated/Superseded</p>
+            <p className="text-sm text-foreground/70 font-sans">Deprecated/Superseded</p>
           </div>
         </div>
       </div>
@@ -107,17 +107,17 @@ const DecisionLog = () => {
       <div className="glass-card p-4 md:p-5">
         <div className="flex items-center gap-3 flex-wrap">
           <div className="flex items-center gap-1.5 flex-1 min-w-[160px]">
-            <Search size={14} className="text-muted-foreground/40 shrink-0" />
+            <Search size={14} className="text-foreground/60 shrink-0" />
             <input type="text" value={search} onChange={(e) => setSearch(e.target.value)}
-              className="flex-1 bg-transparent border-b border-border/60 py-1 text-sm text-foreground font-sans placeholder:text-muted-foreground/40 focus:outline-none focus:border-gold/50 transition-colors" placeholder="Search decisions..." />
+              className="flex-1 bg-transparent border-b border-border/60 py-1 text-sm text-foreground font-sans placeholder:text-foreground/60 focus:outline-none focus:border-gold/50 transition-colors" placeholder="Search decisions..." />
           </div>
-          <div className="flex items-center gap-1 text-xs font-sans">
+          <div className="flex items-center gap-1 text-sm font-sans">
             {(["all", "proposed", "accepted", "deprecated", "superseded"] as const).map((f) => (
               <button key={f} onClick={() => setFilter(f)}
-                className={`px-2.5 py-1 rounded-md capitalize transition-colors ${filter === f ? "bg-gold/15 text-gold-dark border border-gold/30" : "text-muted-foreground/50 hover:text-foreground"}`}>{f}</button>
+                className={`px-2.5 py-1 rounded-md capitalize transition-colors ${filter === f ? "bg-gold/15 text-gold-dark border border-gold/30" : "text-foreground/70 hover:text-foreground"}`}>{f}</button>
             ))}
           </div>
-          <button onClick={addDecision} className="flex items-center gap-1 text-xs font-medium text-gold-dark hover:text-gold transition-colors font-sans shrink-0">
+          <button onClick={addDecision} className="flex items-center gap-1 text-sm font-medium text-gold-dark hover:text-gold transition-colors font-sans shrink-0">
             <Plus size={14} /> Add Decision
           </button>
         </div>
@@ -125,55 +125,55 @@ const DecisionLog = () => {
 
       {/* Decision cards */}
       <div className="glass-card p-4 md:p-5 space-y-3">
-        {filtered.length === 0 && <p className="text-center text-sm text-muted-foreground/50 font-sans py-8">No matching decisions.</p>}
+        {filtered.length === 0 && <p className="text-center text-sm text-foreground/70 font-sans py-8">No matching decisions.</p>}
         {filtered.map((d, i) => (
           <motion.div key={d.id} initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }}
             className="border border-border/40 rounded-xl p-4 space-y-3">
             <div className="flex items-start justify-between gap-3">
               <div className="flex items-center gap-2 flex-1 min-w-0">
-                <span className="text-xs text-muted-foreground/50 font-mono shrink-0">ADR-{String(d.id).padStart(3, "0")}</span>
+                <span className="text-sm text-foreground/70 font-mono shrink-0">ADR-{String(d.id).padStart(3, "0")}</span>
                 <input type="text" value={d.title} onChange={(e) => update(d.id, "title", e.target.value)}
-                  className="flex-1 bg-transparent border-b border-border/60 py-0.5 text-sm font-semibold text-foreground font-sans placeholder:text-muted-foreground/40 focus:outline-none focus:border-gold/50 transition-colors" placeholder="Decision title" />
+                  className="flex-1 bg-transparent border-b border-border/60 py-0.5 text-sm font-semibold text-foreground font-sans placeholder:text-foreground/60 focus:outline-none focus:border-gold/50 transition-colors" placeholder="Decision title" />
               </div>
               <div className="flex items-center gap-1.5 shrink-0">
                 <select value={d.status} onChange={(e) => update(d.id, "status", e.target.value)}
-                  className={`text-[10px] font-medium font-sans px-2 py-0.5 rounded-full border bg-transparent ${STATUS_STYLES[d.status] || ""}`}>
+                  className={`text-sm font-medium font-sans px-2 py-0.5 rounded-full border bg-transparent ${STATUS_STYLES[d.status] || ""}`}>
                   <option value="proposed">proposed</option>
                   <option value="accepted">accepted</option>
                   <option value="deprecated">deprecated</option>
                   <option value="superseded">superseded</option>
                 </select>
-                <button onClick={() => removeDecision(d.id)} className="text-muted-foreground/20 hover:text-red-400 transition-colors" aria-label="Remove"><Trash2 size={12} /></button>
+                <button onClick={() => removeDecision(d.id)} className="text-foreground/40 hover:text-red-400 transition-colors" aria-label="Remove"><Trash2 size={12} /></button>
               </div>
             </div>
 
             <div className="space-y-2">
               <div>
-                <span className="text-[10px] uppercase tracking-wider text-gold-dark font-sans">Context</span>
+                <span className="text-sm uppercase tracking-wider text-gold-dark font-sans">Context</span>
                 <textarea value={d.context} onChange={(e) => update(d.id, "context", e.target.value)}
-                  className="w-full bg-transparent text-xs text-muted-foreground font-sans mt-0.5 border-b border-transparent focus:border-gold/50 focus:outline-none transition-colors resize-none h-12" placeholder="What problem were you solving?" />
+                  className="w-full bg-transparent text-sm text-foreground/75 font-sans mt-0.5 border-b border-transparent focus:border-gold/50 focus:outline-none transition-colors resize-none h-12" placeholder="What problem were you solving?" />
               </div>
               <div>
-                <span className="text-[10px] uppercase tracking-wider text-gold-dark font-sans">Decision</span>
+                <span className="text-sm uppercase tracking-wider text-gold-dark font-sans">Decision</span>
                 <textarea value={d.decision} onChange={(e) => update(d.id, "decision", e.target.value)}
-                  className="w-full bg-transparent text-xs text-muted-foreground font-sans mt-0.5 border-b border-transparent focus:border-gold/50 focus:outline-none transition-colors resize-none h-12" placeholder="What was decided?" />
+                  className="w-full bg-transparent text-sm text-foreground/75 font-sans mt-0.5 border-b border-transparent focus:border-gold/50 focus:outline-none transition-colors resize-none h-12" placeholder="What was decided?" />
               </div>
               <div className="grid sm:grid-cols-2 gap-3">
                 <div>
-                  <span className="text-[10px] uppercase tracking-wider text-muted-foreground/50 font-sans">Alternatives</span>
+                  <span className="text-sm uppercase tracking-wider text-foreground/70 font-sans">Alternatives</span>
                   <textarea value={d.alternatives} onChange={(e) => update(d.id, "alternatives", e.target.value)}
-                    className="w-full bg-transparent text-xs text-muted-foreground/70 font-sans mt-0.5 border-b border-transparent focus:border-gold/50 focus:outline-none transition-colors resize-none h-10" placeholder="Alternatives considered" />
+                    className="w-full bg-transparent text-sm text-foreground/85 font-sans mt-0.5 border-b border-transparent focus:border-gold/50 focus:outline-none transition-colors resize-none h-10" placeholder="Alternatives considered" />
                 </div>
                 <div className="flex gap-3 items-start">
                   <div className="flex-1">
-                    <span className="text-[10px] uppercase tracking-wider text-muted-foreground/50 font-sans">Date</span>
+                    <span className="text-sm uppercase tracking-wider text-foreground/70 font-sans">Date</span>
                     <input type="date" value={d.date} onChange={(e) => update(d.id, "date", e.target.value)}
-                      className="w-full bg-transparent text-xs text-foreground font-mono mt-0.5 border-b border-transparent focus:border-gold/50 focus:outline-none transition-colors" />
+                      className="w-full bg-transparent text-sm text-foreground font-mono mt-0.5 border-b border-transparent focus:border-gold/50 focus:outline-none transition-colors" />
                   </div>
                   <div className="flex-1">
-                    <span className="text-[10px] uppercase tracking-wider text-muted-foreground/50 font-sans">Owner</span>
+                    <span className="text-sm uppercase tracking-wider text-foreground/70 font-sans">Owner</span>
                     <input type="text" value={d.owner} onChange={(e) => update(d.id, "owner", e.target.value)}
-                      className="w-full bg-transparent text-xs text-foreground font-sans mt-0.5 border-b border-transparent focus:border-gold/50 focus:outline-none transition-colors" placeholder="Name" />
+                      className="w-full bg-transparent text-sm text-foreground font-sans mt-0.5 border-b border-transparent focus:border-gold/50 focus:outline-none transition-colors" placeholder="Name" />
                   </div>
                 </div>
               </div>
@@ -182,7 +182,7 @@ const DecisionLog = () => {
         ))}
       </div>
 
-      <p className="text-center text-[10px] uppercase tracking-[0.25em] text-muted-foreground/30 font-sans pt-4">
+      <p className="text-center text-sm uppercase tracking-[0.25em] text-foreground/50 font-sans pt-4">
         Built by Syed Imon Rizvi — Qalb Studios
       </p>
     </ToolCard>

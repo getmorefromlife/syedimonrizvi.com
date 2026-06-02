@@ -90,16 +90,16 @@ const DefinitionOfDone = () => {
             <button
               key={cl.id}
               onClick={() => setActiveId(cl.id)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium font-sans border transition-colors ${
+              className={`px-3 py-1.5 rounded-lg text-sm font-medium font-sans border transition-colors ${
                 activeId === cl.id
                   ? "bg-gold/15 border-gold/30 text-gold-dark"
-                  : "border-border/40 text-muted-foreground hover:border-muted-foreground/40"
+                  : "border-border/40 text-foreground/75 hover:border-muted-foreground/40"
               }`}
             >
               {cl.name}
             </button>
           ))}
-          <button onClick={addChecklist} className="flex items-center gap-1 text-xs font-medium text-gold-dark hover:text-gold transition-colors font-sans px-2">
+          <button onClick={addChecklist} className="flex items-center gap-1 text-sm font-medium text-gold-dark hover:text-gold transition-colors font-sans px-2">
             <Plus size={14} /> New
           </button>
         </div>
@@ -109,14 +109,14 @@ const DefinitionOfDone = () => {
       <div className="glass-card-strong p-4 md:p-5">
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-2">
-            <h2 className="font-serif font-semibold text-foreground text-sm">{active.name}</h2>
-            <span className="text-xs text-muted-foreground/60 font-sans">{checkedCount}/{active.items.length}</span>
+            <h2 className="font-serif font-semibold text-foreground text-base">{active.name}</h2>
+            <span className="text-sm text-foreground/80 font-sans">{checkedCount}/{active.items.length}</span>
           </div>
           <div className="flex items-center gap-2">
-            <button onClick={addItem} className="flex items-center gap-1 text-xs font-medium text-gold-dark hover:text-gold transition-colors font-sans">
+            <button onClick={addItem} className="flex items-center gap-1 text-sm font-medium text-gold-dark hover:text-gold transition-colors font-sans">
               <Plus size={14} /> Add Item
             </button>
-            <button onClick={() => removeChecklist(activeId)} className="text-muted-foreground/20 hover:text-red-400 transition-colors" aria-label="Remove checklist">
+            <button onClick={() => removeChecklist(activeId)} className="text-foreground/40 hover:text-red-400 transition-colors" aria-label="Remove checklist">
               <Trash2 size={12} />
             </button>
           </div>
@@ -129,7 +129,7 @@ const DefinitionOfDone = () => {
       {/* Checklist items */}
       <div className="glass-card p-4 md:p-5 space-y-1">
         {active.items.length === 0 && (
-          <p className="text-sm text-muted-foreground/40 font-sans text-center py-8">No items yet. Add criteria to your checklist.</p>
+          <p className="text-sm text-foreground/60 font-sans text-center py-8">No items yet. Add criteria to your checklist.</p>
         )}
         {active.items.map((item, i) => (
           <motion.div
@@ -144,27 +144,27 @@ const DefinitionOfDone = () => {
               {item.checked ? (
                 <CheckCircle2 size={18} className="text-emerald-500" />
               ) : (
-                <Circle size={18} className="text-muted-foreground/40 hover:text-muted-foreground/60" />
+                <Circle size={18} className="text-foreground/60 hover:text-foreground/80" />
               )}
             </button>
-            <span className="text-[10px] text-muted-foreground/30 font-mono shrink-0">{String(i + 1).padStart(2, "0")}</span>
+            <span className="text-sm text-foreground/50 font-mono shrink-0">{String(i + 1).padStart(2, "0")}</span>
             <input
               type="text"
               value={item.text}
               onChange={(e) => updateItem(item.id, e.target.value)}
               className={`flex-1 bg-transparent border-b border-transparent py-0.5 text-sm font-sans focus:outline-none focus:border-gold/50 transition-colors ${
-                item.checked ? "text-muted-foreground/60 line-through" : "text-foreground"
+                item.checked ? "text-foreground/80 line-through" : "text-foreground"
               }`}
               placeholder="Add criterion..."
             />
-            <button onClick={() => removeItem(item.id)} className="text-muted-foreground/20 hover:text-red-400 transition-colors" aria-label="Remove">
+            <button onClick={() => removeItem(item.id)} className="text-foreground/40 hover:text-red-400 transition-colors" aria-label="Remove">
               <Trash2 size={11} />
             </button>
           </motion.div>
         ))}
       </div>
 
-      <p className="text-center text-[10px] uppercase tracking-[0.25em] text-muted-foreground/30 font-sans pt-4">
+      <p className="text-center text-sm uppercase tracking-[0.25em] text-foreground/50 font-sans pt-4">
         Built by Syed Imon Rizvi — Qalb Studios
       </p>
     </ToolCard>

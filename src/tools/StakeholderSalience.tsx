@@ -21,7 +21,7 @@ const CLASS_COLORS: Record<string, string> = {
   "Dependent": "bg-violet-500/10 border-violet-400/30 text-violet-500",
   "Demanding": "bg-sky-500/10 border-sky-400/30 text-sky-500",
   "Discretionary": "bg-emerald-500/10 border-emerald-400/30 text-emerald-500",
-  "Dormant": "bg-muted/20 border-border/40 text-muted-foreground",
+  "Dormant": "bg-muted/20 border-border/40 text-foreground/75",
 };
 
 function classify(p: number, l: number, u: number): string {
@@ -76,7 +76,7 @@ const StakeholderSalience = () => {
       <div className="glass-card p-3 md:p-4">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {Object.entries(CLASS_COLORS).map(([key, cls]) => (
-            <div key={key} className={`px-2.5 py-1.5 rounded-md text-[10px] font-medium font-sans border ${cls}`}>{key}</div>
+            <div key={key} className={`px-2.5 py-1.5 rounded-md text-sm font-medium font-sans border ${cls}`}>{key}</div>
           ))}
         </div>
       </div>
@@ -84,8 +84,8 @@ const StakeholderSalience = () => {
       {/* Stakeholder cards */}
       <div className="glass-card p-4 md:p-5 space-y-3">
         <div className="flex items-center justify-between">
-          <h2 className="font-serif font-semibold text-foreground text-sm">Stakeholders</h2>
-          <button onClick={add} className="flex items-center gap-1 text-xs font-medium text-gold-dark hover:text-gold transition-colors font-sans">
+          <h2 className="font-serif font-semibold text-foreground text-base">Stakeholders</h2>
+          <button onClick={add} className="flex items-center gap-1 text-sm font-medium text-gold-dark hover:text-gold transition-colors font-sans">
             <Plus size={14} /> Add
           </button>
         </div>
@@ -95,24 +95,24 @@ const StakeholderSalience = () => {
             className="border border-border/40 rounded-xl p-4 space-y-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 flex-1">
-                <span className="text-xs text-muted-foreground/50 font-mono">{String(i + 1).padStart(2, "0")}</span>
+                <span className="text-sm text-foreground/70 font-mono">{String(i + 1).padStart(2, "0")}</span>
                 <input type="text" value={s.name} onChange={(e) => update(s.id, "name", e.target.value)}
-                  className="flex-1 bg-transparent border-b border-border/60 py-0.5 text-sm font-semibold text-foreground font-sans placeholder:text-muted-foreground/40 focus:outline-none focus:border-gold/50 transition-colors" placeholder="Name" />
+                  className="flex-1 bg-transparent border-b border-border/60 py-0.5 text-sm font-semibold text-foreground font-sans placeholder:text-foreground/60 focus:outline-none focus:border-gold/50 transition-colors" placeholder="Name" />
               </div>
               <div className="flex items-center gap-2">
-                <span className={`text-[10px] font-medium font-sans px-2 py-0.5 rounded-full border ${CLASS_COLORS[s.klass] || "border-border/40 text-muted-foreground"}`}>
+                <span className={`text-sm font-medium font-sans px-2 py-0.5 rounded-full border ${CLASS_COLORS[s.klass] || "border-border/40 text-foreground/75"}`}>
                   {s.klass}
                 </span>
-                <button onClick={() => remove(s.id)} className="text-muted-foreground/20 hover:text-red-400 transition-colors" aria-label="Remove"><Trash2 size={12} /></button>
+                <button onClick={() => remove(s.id)} className="text-foreground/40 hover:text-red-400 transition-colors" aria-label="Remove"><Trash2 size={12} /></button>
               </div>
             </div>
 
             <div className="grid grid-cols-3 gap-4">
               {(["power", "legitimacy", "urgency"] as const).map((attr) => (
                 <div key={attr}>
-                  <div className="flex justify-between text-[10px] font-sans mb-0.5">
-                    <span className="text-muted-foreground/60 capitalize">{attr}</span>
-                    <span className={s[attr] >= 5 ? "gold-text font-medium" : "text-muted-foreground"}>{s[attr]}</span>
+                  <div className="flex justify-between text-sm font-sans mb-0.5">
+                    <span className="text-foreground/80 capitalize">{attr}</span>
+                    <span className={s[attr] >= 5 ? "gold-text font-medium" : "text-foreground/75"}>{s[attr]}</span>
                   </div>
                   <input type="range" value={s[attr]} onChange={(e) => update(s.id, attr, Number(e.target.value))} min="1" max="10" step="1" className="w-full accent-gold-dark" />
                 </div>
@@ -120,7 +120,7 @@ const StakeholderSalience = () => {
             </div>
 
             {/* Engagement tip */}
-            <p className="text-[10px] italic text-muted-foreground/50 font-sans">
+            <p className="text-sm italic text-foreground/70 font-sans">
               {s.klass === "Definitive" && "Proactively manage — high engagement, frequent updates, involve in decisions."}
               {s.klass === "Dominant" && "Keep satisfied — they have power and legitimacy, engage regularly."}
               {s.klass === "Dangerous" && "Monitor carefully — power and urgency without legitimacy can be coercive."}
@@ -135,21 +135,21 @@ const StakeholderSalience = () => {
 
       {/* Summary */}
       <div className="glass-card-strong p-4 md:p-5">
-        <h2 className="font-serif font-semibold text-foreground text-sm mb-3">Class Distribution</h2>
+        <h2 className="font-serif font-semibold text-foreground text-base mb-3">Class Distribution</h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {Object.keys(CLASS_COLORS).map((k) => {
             const count = scored.filter((s) => s.klass === k).length;
             return (
               <div key={k} className="text-center p-2 rounded-lg bg-background/50">
                 <p className="text-lg font-serif font-bold text-foreground">{count}</p>
-                <p className="text-[10px] text-muted-foreground/50 font-sans">{k}</p>
+                <p className="text-sm text-foreground/70 font-sans">{k}</p>
               </div>
             );
           })}
         </div>
       </div>
 
-      <p className="text-center text-[10px] uppercase tracking-[0.25em] text-muted-foreground/30 font-sans pt-4">
+      <p className="text-center text-sm uppercase tracking-[0.25em] text-foreground/50 font-sans pt-4">
         Built by Syed Imon Rizvi — Qalb Studios
       </p>
     </ToolCard>

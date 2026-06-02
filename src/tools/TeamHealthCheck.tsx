@@ -108,15 +108,15 @@ const TeamHealthCheck = () => {
               ))}
             </svg>
           ) : (
-            <p className="text-sm text-muted-foreground/40 font-sans py-16">Add at least 3 metrics to see the radar</p>
+            <p className="text-sm text-foreground/60 font-sans py-16">Add at least 3 metrics to see the radar</p>
           )}
         </div>
 
         {/* Metrics */}
         <div className="glass-card p-4 md:p-5 space-y-3">
           <div className="flex items-center justify-between">
-            <h2 className="font-serif font-semibold text-foreground text-sm">Dimensions</h2>
-            <button onClick={addMetric} className="flex items-center gap-1 text-xs font-medium text-gold-dark hover:text-gold transition-colors font-sans">
+            <h2 className="font-serif font-semibold text-foreground text-base">Dimensions</h2>
+            <button onClick={addMetric} className="flex items-center gap-1 text-sm font-medium text-gold-dark hover:text-gold transition-colors font-sans">
               <Plus size={14} /> Add
             </button>
           </div>
@@ -125,11 +125,11 @@ const TeamHealthCheck = () => {
             {metrics.map((m, i) => (
               <div key={m.id} className="border border-border/40 rounded-lg p-2.5 space-y-1.5">
                 <div className="flex items-center gap-1.5">
-                  <span className="text-[10px] text-muted-foreground/40 font-mono shrink-0">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="text-sm text-foreground/60 font-mono shrink-0">{String(i + 1).padStart(2, "0")}</span>
                   <input type="text" value={m.name} onChange={(e) => updateMetric(m.id, "name", e.target.value)}
-                    className="flex-1 bg-transparent border-b border-border/60 py-0.5 text-xs text-foreground font-sans placeholder:text-muted-foreground/40 focus:outline-none focus:border-gold/50 transition-colors" placeholder="Dimension" />
-                  <span className={`text-xs font-mono font-bold ${m.score < 5 ? "text-red-400" : m.score >= 7 ? "text-emerald-500" : "text-amber-500"}`}>{m.score}</span>
-                  <button onClick={() => removeMetric(m.id)} className="text-muted-foreground/20 hover:text-red-400 transition-colors" aria-label="Remove"><Trash2 size={10} /></button>
+                    className="flex-1 bg-transparent border-b border-border/60 py-0.5 text-sm text-foreground font-sans placeholder:text-foreground/60 focus:outline-none focus:border-gold/50 transition-colors" placeholder="Dimension" />
+                  <span className={`text-sm font-mono font-bold ${m.score < 5 ? "text-red-400" : m.score >= 7 ? "text-emerald-500" : "text-amber-500"}`}>{m.score}</span>
+                  <button onClick={() => removeMetric(m.id)} className="text-foreground/40 hover:text-red-400 transition-colors" aria-label="Remove"><Trash2 size={10} /></button>
                 </div>
                 <input type="range" value={m.score} onChange={(e) => updateMetric(m.id, "score", Number(e.target.value))} min="1" max="10" step="1" className="w-full accent-gold-dark" />
               </div>
@@ -141,33 +141,33 @@ const TeamHealthCheck = () => {
       {/* Stats */}
       {stats && (
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="glass-card-strong p-4 md:p-5">
-          <h2 className="font-serif font-semibold text-foreground text-sm mb-3">Health Summary</h2>
+          <h2 className="font-serif font-semibold text-foreground text-base mb-3">Health Summary</h2>
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
             <div className="text-center p-2 rounded-lg bg-background/50">
               <p className="text-2xl font-serif font-bold gold-text">{stats.avg.toFixed(1)}</p>
-              <p className="text-[10px] text-muted-foreground/50 font-sans">Average</p>
+              <p className="text-sm text-foreground/70 font-sans">Average</p>
             </div>
             <div className="text-center p-2 rounded-lg bg-background/50">
               <p className="text-2xl font-serif font-bold text-foreground">{stats.n}</p>
-              <p className="text-[10px] text-muted-foreground/50 font-sans">Dimensions</p>
+              <p className="text-sm text-foreground/70 font-sans">Dimensions</p>
             </div>
             <div className="text-center p-2 rounded-lg bg-background/50">
               <p className="text-2xl font-serif font-bold text-emerald-500">{stats.goodCount}</p>
-              <p className="text-[10px] text-muted-foreground/50 font-sans">Healthy (&#8805;7)</p>
+              <p className="text-sm text-foreground/70 font-sans">Healthy (&#8805;7)</p>
             </div>
             <div className="text-center p-2 rounded-lg bg-background/50">
               <p className="text-2xl font-serif font-bold text-red-400">{stats.lowCount}</p>
-              <p className="text-[10px] text-muted-foreground/50 font-sans">At Risk (&lt;5)</p>
+              <p className="text-sm text-foreground/70 font-sans">At Risk (&lt;5)</p>
             </div>
             <div className="text-center p-2 rounded-lg bg-background/50">
               <p className="text-lg font-serif font-bold text-foreground">{stats.min} — {stats.max}</p>
-              <p className="text-[10px] text-muted-foreground/50 font-sans">Range</p>
+              <p className="text-sm text-foreground/70 font-sans">Range</p>
             </div>
           </div>
         </motion.div>
       )}
 
-      <p className="text-center text-[10px] uppercase tracking-[0.25em] text-muted-foreground/30 font-sans pt-4">
+      <p className="text-center text-sm uppercase tracking-[0.25em] text-foreground/50 font-sans pt-4">
         Built by Syed Imon Rizvi — Qalb Studios
       </p>
     </ToolCard>

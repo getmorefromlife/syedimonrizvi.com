@@ -76,7 +76,7 @@ const BurndownChart = () => {
       <div className="glass-card p-6 md:p-8 space-y-6">
         <div className="flex flex-wrap gap-6">
           <div className="flex-1 min-w-[140px]">
-            <label className="block text-xs uppercase tracking-wider text-muted-foreground/60 font-sans mb-1.5">
+            <label className="block text-sm uppercase tracking-wider text-foreground/80 font-sans mb-1.5">
               Sprint Days
             </label>
             <input
@@ -92,7 +92,7 @@ const BurndownChart = () => {
             />
           </div>
           <div className="flex-1 min-w-[140px]">
-            <label className="block text-xs uppercase tracking-wider text-muted-foreground/60 font-sans mb-1.5">
+            <label className="block text-sm uppercase tracking-wider text-foreground/80 font-sans mb-1.5">
               Total Story Points
             </label>
             <input
@@ -109,7 +109,7 @@ const BurndownChart = () => {
           <div className="flex items-end pb-2">
             <button
               onClick={reset}
-              className="text-xs text-muted-foreground/50 hover:text-gold-dark transition-colors font-sans"
+              className="text-sm text-foreground/70 hover:text-gold-dark transition-colors font-sans"
             >
               Reset data
             </button>
@@ -177,7 +177,7 @@ const BurndownChart = () => {
           </h2>
           <button
             onClick={exportPNG}
-            className="flex items-center gap-1.5 text-xs font-medium text-gold-dark hover:text-gold transition-colors font-sans"
+            className="flex items-center gap-1.5 text-sm font-medium text-gold-dark hover:text-gold transition-colors font-sans"
           >
             <Download size={14} /> Export PNG
           </button>
@@ -185,14 +185,14 @@ const BurndownChart = () => {
         <div className="grid grid-cols-5 sm:grid-cols-10 gap-2">
           {Array.from({ length: days + 1 }, (_, i) => (
             <div key={i} className="text-center">
-              <span className="text-[10px] text-muted-foreground/50 font-mono block mb-1">
+              <span className="text-sm text-foreground/70 font-mono block mb-1">
                 D{i}
               </span>
               <input
                 type="number"
                 value={remaining[i] ?? ""}
                 onChange={(e) => updateRemaining(i, e.target.value)}
-                className="w-full text-center bg-transparent border border-border/40 rounded-lg py-1.5 text-sm text-foreground font-mono placeholder:text-muted-foreground/30 focus:outline-none focus:border-gold/50 transition-colors"
+                className="w-full text-center bg-transparent border border-border/40 rounded-lg py-1.5 text-sm text-foreground font-mono placeholder:text-foreground/50 focus:outline-none focus:border-gold/50 transition-colors"
                 placeholder={i === 0 ? String(totalPoints) : ""}
                 min="0"
               />
@@ -201,7 +201,7 @@ const BurndownChart = () => {
         </div>
       </div>
 
-      <p className="text-center text-[10px] uppercase tracking-[0.25em] text-muted-foreground/30 font-sans pt-4">
+      <p className="text-center text-sm uppercase tracking-[0.25em] text-foreground/50 font-sans pt-4">
         Built by Syed Imon Rizvi — Qalb Studios
       </p>
     </ToolCard>

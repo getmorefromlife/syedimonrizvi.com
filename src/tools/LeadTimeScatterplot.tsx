@@ -144,7 +144,7 @@ const LeadTimeScatterplot = () => {
               </ScatterChart>
             </ResponsiveContainer>
           </div>
-          <div className="flex justify-center gap-4 mt-2 text-[10px] font-sans">
+          <div className="flex justify-center gap-4 mt-2 text-sm font-sans">
             {stats && (
               <>
                 <span className="flex items-center gap-1"><span className="w-3 h-0.5 bg-emerald-500 inline-block" /> Median ({stats.median}d)</span>
@@ -158,18 +158,18 @@ const LeadTimeScatterplot = () => {
         {/* Data entry */}
         <div className="glass-card p-4 md:p-5 space-y-3">
           <div className="flex items-center justify-between">
-            <h2 className="font-serif font-semibold text-foreground text-sm">Items</h2>
+            <h2 className="font-serif font-semibold text-foreground text-base">Items</h2>
             <div className="flex items-center gap-2">
               <button
                 onClick={exportPNG}
-                className="text-muted-foreground/40 hover:text-gold-dark transition-colors"
+                className="text-foreground/60 hover:text-gold-dark transition-colors"
                 aria-label="Export PNG"
               >
                 <Download size={14} />
               </button>
               <button
                 onClick={addPoint}
-                className="flex items-center gap-1 text-xs font-medium text-gold-dark hover:text-gold transition-colors font-sans"
+                className="flex items-center gap-1 text-sm font-medium text-gold-dark hover:text-gold transition-colors font-sans"
               >
                 <Plus size={14} /> Add
               </button>
@@ -179,22 +179,22 @@ const LeadTimeScatterplot = () => {
           <div className="overflow-y-auto max-h-[320px] space-y-1.5 pr-1">
             {points.map((p, i) => (
               <div key={p.id} className="flex items-center gap-2">
-                <span className="text-[10px] text-muted-foreground/40 font-mono w-6 shrink-0">
+                <span className="text-sm text-foreground/60 font-mono w-6 shrink-0">
                   #{i + 1}
                 </span>
                 <input
                   type="number"
                   value={p.leadTime}
                   onChange={(e) => updatePoint(p.id, e.target.value)}
-                  className="flex-1 bg-transparent border-b border-border/60 py-1 text-sm text-foreground font-mono placeholder:text-muted-foreground/40 focus:outline-none focus:border-gold/50 transition-colors"
+                  className="flex-1 bg-transparent border-b border-border/60 py-1 text-sm text-foreground font-mono placeholder:text-foreground/60 focus:outline-none focus:border-gold/50 transition-colors"
                   placeholder="days"
                   min="0"
                   step="0.5"
                 />
-                <span className="text-[10px] text-muted-foreground/30 font-sans w-6">d</span>
+                <span className="text-sm text-foreground/50 font-sans w-6">d</span>
                 <button
                   onClick={() => removePoint(p.id)}
-                  className="text-muted-foreground/20 hover:text-red-400 transition-colors"
+                  className="text-foreground/40 hover:text-red-400 transition-colors"
                   aria-label="Remove"
                 >
                   <Trash2 size={11} />
@@ -212,34 +212,34 @@ const LeadTimeScatterplot = () => {
           animate={{ opacity: 1, y: 0 }}
           className="glass-card-strong p-5 md:p-6"
         >
-          <h2 className="font-serif font-semibold text-foreground text-sm mb-3">Service-Level Percentiles</h2>
+          <h2 className="font-serif font-semibold text-foreground text-base mb-3">Service-Level Percentiles</h2>
           <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
             <div className="text-center p-2 rounded-lg bg-background/50">
-              <p className="text-[10px] text-muted-foreground/50 font-sans">Min</p>
+              <p className="text-sm text-foreground/70 font-sans">Min</p>
               <p className="text-lg font-serif font-bold text-foreground">{stats.min}</p>
             </div>
             <div className="text-center p-2 rounded-lg bg-background/50">
-              <p className="text-[10px] text-muted-foreground/50 font-sans">Median (P50)</p>
+              <p className="text-sm text-foreground/70 font-sans">Median (P50)</p>
               <p className="text-lg font-serif font-bold text-emerald-500">{stats.median}</p>
             </div>
             <div className="text-center p-2 rounded-lg bg-background/50">
-              <p className="text-[10px] text-muted-foreground/50 font-sans">Average</p>
+              <p className="text-sm text-foreground/70 font-sans">Average</p>
               <p className="text-lg font-serif font-bold text-foreground">{stats.avg.toFixed(1)}</p>
             </div>
             <div className="text-center p-2 rounded-lg bg-background/50">
-              <p className="text-[10px] text-muted-foreground/50 font-sans">P85</p>
+              <p className="text-sm text-foreground/70 font-sans">P85</p>
               <p className="text-lg font-serif font-bold text-amber-500">{stats.p85}</p>
             </div>
             <div className="text-center p-2 rounded-lg bg-background/50">
-              <p className="text-[10px] text-muted-foreground/50 font-sans">P95</p>
+              <p className="text-sm text-foreground/70 font-sans">P95</p>
               <p className="text-lg font-serif font-bold text-red-500">{stats.p95}</p>
             </div>
             <div className="text-center p-2 rounded-lg bg-background/50">
-              <p className="text-[10px] text-muted-foreground/50 font-sans">Max</p>
+              <p className="text-sm text-foreground/70 font-sans">Max</p>
               <p className="text-lg font-serif font-bold text-foreground">{stats.max}</p>
             </div>
           </div>
-          <p className="text-[10px] text-muted-foreground/40 font-sans mt-3 text-center">
+          <p className="text-sm text-foreground/60 font-sans mt-3 text-center">
             {stats.n} items ·{" "}
             {stats.p95 <= stats.median * 3
               ? "Predictable process ✓"
@@ -248,7 +248,7 @@ const LeadTimeScatterplot = () => {
         </motion.div>
       )}
 
-      <p className="text-center text-[10px] uppercase tracking-[0.25em] text-muted-foreground/30 font-sans pt-4">
+      <p className="text-center text-sm uppercase tracking-[0.25em] text-foreground/50 font-sans pt-4">
         Built by Syed Imon Rizvi — Qalb Studios
       </p>
     </ToolCard>

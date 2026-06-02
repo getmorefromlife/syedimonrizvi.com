@@ -40,11 +40,11 @@ const WIPLimitCalculator = () => {
       <div className="grid md:grid-cols-2 gap-6">
         {/* Inputs */}
         <div className="glass-card p-5 md:p-6 space-y-5">
-          <h2 className="font-serif font-semibold text-foreground text-sm">Parameters</h2>
+          <h2 className="font-serif font-semibold text-foreground text-base">Parameters</h2>
 
           <div>
-            <div className="flex justify-between text-xs font-sans mb-1">
-              <span className="text-muted-foreground">Team Size</span>
+            <div className="flex justify-between text-sm font-sans mb-1">
+              <span className="text-foreground/75">Team Size</span>
               <span className="text-foreground font-medium">{teamSize}</span>
             </div>
             <input
@@ -57,8 +57,8 @@ const WIPLimitCalculator = () => {
           </div>
 
           <div>
-            <div className="flex justify-between text-xs font-sans mb-1">
-              <span className="text-muted-foreground">Flow Efficiency</span>
+            <div className="flex justify-between text-sm font-sans mb-1">
+              <span className="text-foreground/75">Flow Efficiency</span>
               <span className="text-foreground font-medium">{(flowEfficiency * 100).toFixed(0)}%</span>
             </div>
             <input
@@ -71,8 +71,8 @@ const WIPLimitCalculator = () => {
           </div>
 
           <div>
-            <div className="flex justify-between text-xs font-sans mb-1">
-              <span className="text-muted-foreground">Target Cycle Time (days)</span>
+            <div className="flex justify-between text-sm font-sans mb-1">
+              <span className="text-foreground/75">Target Cycle Time (days)</span>
               <span className="text-foreground font-medium">{targetCycleDays}</span>
             </div>
             <input
@@ -85,8 +85,8 @@ const WIPLimitCalculator = () => {
           </div>
 
           <div>
-            <div className="flex justify-between text-xs font-sans mb-1">
-              <span className="text-muted-foreground">Avg Daily Demand</span>
+            <div className="flex justify-between text-sm font-sans mb-1">
+              <span className="text-foreground/75">Avg Daily Demand</span>
               <span className="text-foreground font-medium">{avgDemandPerDay.toFixed(1)}</span>
             </div>
             <input
@@ -101,39 +101,39 @@ const WIPLimitCalculator = () => {
 
         {/* Results */}
         <div className="glass-card-strong p-5 md:p-6 space-y-5">
-          <h2 className="font-serif font-semibold text-foreground text-sm">Suggested Limits</h2>
+          <h2 className="font-serif font-semibold text-foreground text-base">Suggested Limits</h2>
 
           <div className="text-center">
-            <p className="text-xs uppercase tracking-widest text-muted-foreground/60 font-sans mb-1">
+            <p className="text-sm uppercase tracking-widest text-foreground/80 font-sans mb-1">
               Recommended WIP Limit
             </p>
             <p className="text-5xl md:text-6xl font-serif font-bold gold-text">
               {results.suggestedWip}
             </p>
-            <p className="text-[10px] text-muted-foreground/50 font-sans mt-1">
+            <p className="text-sm text-foreground/70 font-sans mt-1">
               items per team
             </p>
           </div>
 
           <div className="border-t border-border/30 pt-4 space-y-2">
-            <div className="flex justify-between text-xs font-sans">
-              <span className="text-muted-foreground">Little's Law WIP</span>
+            <div className="flex justify-between text-sm font-sans">
+              <span className="text-foreground/75">Little's Law WIP</span>
               <span className="text-foreground font-mono">{results.littleLawWip}</span>
             </div>
-            <div className="flex justify-between text-xs font-sans">
-              <span className="text-muted-foreground">Efficiency-Adjusted WIP</span>
+            <div className="flex justify-between text-sm font-sans">
+              <span className="text-foreground/75">Efficiency-Adjusted WIP</span>
               <span className="text-foreground font-mono">{results.effWip}</span>
             </div>
-            <div className="flex justify-between text-xs font-sans">
-              <span className="text-muted-foreground">Utilization</span>
+            <div className="flex justify-between text-sm font-sans">
+              <span className="text-foreground/75">Utilization</span>
               <span className="text-foreground font-mono">{(results.utilization * 100).toFixed(1)}%</span>
             </div>
-            <div className="flex justify-between text-xs font-sans">
-              <span className="text-muted-foreground">Arrival Rate (λ)</span>
+            <div className="flex justify-between text-sm font-sans">
+              <span className="text-foreground/75">Arrival Rate (λ)</span>
               <span className="text-foreground font-mono">{results.arrivalRate.toFixed(1)}/day</span>
             </div>
-            <div className="flex justify-between text-xs font-sans">
-              <span className="text-muted-foreground">Service Rate (μ)</span>
+            <div className="flex justify-between text-sm font-sans">
+              <span className="text-foreground/75">Service Rate (μ)</span>
               <span className="text-foreground font-mono">{results.serviceRate}/day</span>
             </div>
           </div>
@@ -141,12 +141,12 @@ const WIPLimitCalculator = () => {
       </div>
 
       {/* Formula reference */}
-      <div className="glass-card p-4 text-[11px] font-sans text-muted-foreground leading-relaxed">
-        <span className="text-gold-dark font-medium text-[10px] uppercase tracking-wider">Formula: </span>
+      <div className="glass-card p-4 text-base font-sans text-foreground/75 leading-relaxed">
+        <span className="text-gold-dark font-medium text-sm uppercase tracking-wider">Formula: </span>
         Little's Law: <span className="font-mono text-foreground">WIP = λ × CT</span> where λ = arrival rate, CT = target cycle time. Adjusted for flow efficiency: <span className="font-mono text-foreground">Actual WIP = WIP ÷ Efficiency</span>.
       </div>
 
-      <p className="text-center text-[10px] uppercase tracking-[0.25em] text-muted-foreground/30 font-sans pt-4">
+      <p className="text-center text-sm uppercase tracking-[0.25em] text-foreground/50 font-sans pt-4">
         Built by Syed Imon Rizvi — Qalb Studios
       </p>
     </ToolCard>

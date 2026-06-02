@@ -67,10 +67,10 @@ const CostOfDelayCalculator = () => {
         how="1. Identify the feature or project. 2. Estimate the value lost per week of delay in each relevant dimension (UBV, TC, RR/OE). 3. Estimate the delay duration in weeks. 4. CoD = sum of (value/week × weeks) across all dimensions. 5. Compare across items to prioritise."
       >
         <div className="border-t border-border/30 pt-3">
-          <span className="text-[10px] uppercase tracking-wider text-gold-dark font-sans font-medium">
+          <span className="text-sm uppercase tracking-wider text-gold-dark font-sans font-medium">
             Formula
           </span>
-          <p className="text-sm text-muted-foreground font-sans leading-relaxed mt-1">
+          <p className="text-sm text-foreground/75 font-sans leading-relaxed mt-1">
             Cost of Delay = (Value per Week × Weeks of Delay) per dimension
           </p>
         </div>
@@ -78,8 +78,8 @@ const CostOfDelayCalculator = () => {
 
       {/* Description of types */}
       <div className="glass-card p-4 md:p-5">
-        <h2 className="font-serif font-semibold text-foreground text-sm mb-3">Three Dimensions of Cost of Delay</h2>
-        <div className="space-y-3 text-xs font-sans text-muted-foreground leading-relaxed">
+        <h2 className="font-serif font-semibold text-foreground text-base mb-3">Three Dimensions of Cost of Delay</h2>
+        <div className="space-y-3 text-base font-sans text-foreground/75 leading-relaxed">
           {Object.entries(TYPE_DESC).map(([key, desc]) => (
             <div key={key}>
               <span className="text-gold-dark font-medium">{TYPE_LABELS[key]}</span>
@@ -92,10 +92,10 @@ const CostOfDelayCalculator = () => {
       {/* Scenarios */}
       <div className="glass-card p-5 md:p-6 space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="font-serif font-semibold text-foreground text-sm">Features / Projects</h2>
+          <h2 className="font-serif font-semibold text-foreground text-base">Features / Projects</h2>
           <button
             onClick={addScenario}
-            className="flex items-center gap-1 text-xs font-medium text-gold-dark hover:text-gold transition-colors font-sans"
+            className="flex items-center gap-1 text-sm font-medium text-gold-dark hover:text-gold transition-colors font-sans"
           >
             <Plus size={14} /> Add
           </button>
@@ -110,18 +110,18 @@ const CostOfDelayCalculator = () => {
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 flex-1">
-                <span className="text-xs text-muted-foreground/50 font-mono">{String(i + 1).padStart(2, "0")}</span>
+                <span className="text-sm text-foreground/70 font-mono">{String(i + 1).padStart(2, "0")}</span>
                 <input
                   type="text"
                   value={s.name}
                   onChange={(e) => update(s.id, "name", e.target.value)}
-                  className="bg-transparent border-b border-border/60 py-0.5 text-sm text-foreground font-sans placeholder:text-muted-foreground/40 focus:outline-none focus:border-gold/50 transition-colors flex-1"
+                  className="bg-transparent border-b border-border/60 py-0.5 text-sm text-foreground font-sans placeholder:text-foreground/60 focus:outline-none focus:border-gold/50 transition-colors flex-1"
                   placeholder="Feature name"
                 />
               </div>
               <button
                 onClick={() => removeScenario(s.id)}
-                className="text-muted-foreground/30 hover:text-red-400 transition-colors ml-2"
+                className="text-foreground/50 hover:text-red-400 transition-colors ml-2"
                 aria-label="Remove"
               >
                 <Trash2 size={13} />
@@ -130,7 +130,7 @@ const CostOfDelayCalculator = () => {
 
             <div className="grid sm:grid-cols-3 gap-3">
               <div>
-                <label className="block text-[10px] uppercase tracking-wider text-muted-foreground/50 font-sans mb-0.5">Cost Dimension</label>
+                <label className="block text-sm uppercase tracking-wider text-foreground/70 font-sans mb-0.5">Cost Dimension</label>
                 <select
                   value={s.type}
                   onChange={(e) => update(s.id, "type", e.target.value)}
@@ -142,7 +142,7 @@ const CostOfDelayCalculator = () => {
                 </select>
               </div>
               <div>
-                <label className="block text-[10px] uppercase tracking-wider text-muted-foreground/50 font-sans mb-0.5">Value per Week ($)</label>
+                <label className="block text-sm uppercase tracking-wider text-foreground/70 font-sans mb-0.5">Value per Week ($)</label>
                 <input
                   type="number"
                   value={s.vpw || ""}
@@ -153,7 +153,7 @@ const CostOfDelayCalculator = () => {
                 />
               </div>
               <div>
-                <label className="block text-[10px] uppercase tracking-wider text-muted-foreground/50 font-sans mb-0.5">Delay (Weeks)</label>
+                <label className="block text-sm uppercase tracking-wider text-foreground/70 font-sans mb-0.5">Delay (Weeks)</label>
                 <input
                   type="number"
                   value={s.dw || ""}
@@ -167,7 +167,7 @@ const CostOfDelayCalculator = () => {
 
             {s.total > 0 && (
               <div className="text-right">
-                <span className="text-[10px] uppercase tracking-wider text-muted-foreground/50 font-sans mr-2">
+                <span className="text-sm uppercase tracking-wider text-foreground/70 font-sans mr-2">
                   Cost of Delay
                 </span>
                 <span className="text-lg font-serif font-bold gold-text">
@@ -186,19 +186,19 @@ const CostOfDelayCalculator = () => {
           animate={{ opacity: 1, y: 0 }}
           className="glass-card-strong p-6 md:p-8 text-center"
         >
-          <p className="text-xs uppercase tracking-widest text-muted-foreground/60 font-sans mb-1">
+          <p className="text-sm uppercase tracking-widest text-foreground/80 font-sans mb-1">
             Total Cost of Delay
           </p>
           <p className="text-4xl md:text-5xl font-serif font-bold gold-text">
             ${grandTotal.toLocaleString()}
           </p>
-          <p className="text-xs text-muted-foreground/50 font-sans mt-2">
+          <p className="text-sm text-foreground/70 font-sans mt-2">
             Combined across {scored.length} feature{scored.length !== 1 ? "s" : ""}
           </p>
         </motion.div>
       )}
 
-      <p className="text-center text-[10px] uppercase tracking-[0.25em] text-muted-foreground/30 font-sans pt-4">
+      <p className="text-center text-sm uppercase tracking-[0.25em] text-foreground/50 font-sans pt-4">
         Built by Syed Imon Rizvi — Qalb Studios
       </p>
     </ToolCard>

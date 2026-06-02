@@ -109,25 +109,25 @@ const BlockerLog = () => {
           animate={{ opacity: 1, y: 0 }}
           className="glass-card-strong p-5 md:p-6"
         >
-          <h2 className="font-serif font-semibold text-foreground text-sm mb-3">Overview</h2>
+          <h2 className="font-serif font-semibold text-foreground text-base mb-3">Overview</h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             <div className="text-center p-3 rounded-lg bg-background/50">
               <p className="text-2xl font-serif font-bold text-foreground">{stats.total}</p>
-              <p className="text-[10px] text-muted-foreground/50 font-sans">Total Blockers</p>
+              <p className="text-sm text-foreground/70 font-sans">Total Blockers</p>
             </div>
             <div className="text-center p-3 rounded-lg bg-background/50">
               <p className="text-2xl font-serif font-bold text-red-400">{stats.open}</p>
-              <p className="text-[10px] text-muted-foreground/50 font-sans">Open</p>
+              <p className="text-sm text-foreground/70 font-sans">Open</p>
             </div>
             <div className="text-center p-3 rounded-lg bg-background/50">
               <p className="text-2xl font-serif font-bold text-emerald-500">{stats.resolved}</p>
-              <p className="text-[10px] text-muted-foreground/50 font-sans">Resolved</p>
+              <p className="text-sm text-foreground/70 font-sans">Resolved</p>
             </div>
             <div className="text-center p-3 rounded-lg bg-background/50">
               <p className="text-xl font-serif font-bold text-foreground">
                 {stats.avgResolution !== null ? stats.avgResolution.toFixed(1) : "—"}
               </p>
-              <p className="text-[10px] text-muted-foreground/50 font-sans">Avg Resolution (days)</p>
+              <p className="text-sm text-foreground/70 font-sans">Avg Resolution (days)</p>
             </div>
           </div>
         </motion.div>
@@ -137,16 +137,16 @@ const BlockerLog = () => {
       <div className="glass-card p-4 md:p-5">
         <div className="flex items-center gap-3 flex-wrap">
           <div className="flex items-center gap-1.5 flex-1 min-w-[160px]">
-            <Search size={14} className="text-muted-foreground/40 shrink-0" />
+            <Search size={14} className="text-foreground/60 shrink-0" />
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="flex-1 bg-transparent border-b border-border/60 py-1 text-sm text-foreground font-sans placeholder:text-muted-foreground/40 focus:outline-none focus:border-gold/50 transition-colors"
+              className="flex-1 bg-transparent border-b border-border/60 py-1 text-sm text-foreground font-sans placeholder:text-foreground/60 focus:outline-none focus:border-gold/50 transition-colors"
               placeholder="Search blockers..."
             />
           </div>
-          <div className="flex items-center gap-1 text-xs font-sans">
+          <div className="flex items-center gap-1 text-sm font-sans">
             {(["all", "open", "resolved"] as const).map((f) => (
               <button
                 key={f}
@@ -154,7 +154,7 @@ const BlockerLog = () => {
                 className={`px-2.5 py-1 rounded-md capitalize transition-colors ${
                   filter === f
                     ? "bg-gold/15 text-gold-dark border border-gold/30"
-                    : "text-muted-foreground/50 hover:text-foreground"
+                    : "text-foreground/70 hover:text-foreground"
                 }`}
               >
                 {f}
@@ -163,7 +163,7 @@ const BlockerLog = () => {
           </div>
           <button
             onClick={addBlocker}
-            className="flex items-center gap-1 text-xs font-medium text-gold-dark hover:text-gold transition-colors font-sans shrink-0"
+            className="flex items-center gap-1 text-sm font-medium text-gold-dark hover:text-gold transition-colors font-sans shrink-0"
           >
             <Plus size={14} /> Add Blocker
           </button>
@@ -173,7 +173,7 @@ const BlockerLog = () => {
       {/* Blocker list */}
       <div className="glass-card p-5 md:p-6 space-y-3">
         {filtered.length === 0 ? (
-          <p className="text-center text-sm text-muted-foreground/50 font-sans py-8">
+          <p className="text-center text-sm text-foreground/70 font-sans py-8">
             No blockers found. Add one to get started.
           </p>
         ) : (
@@ -188,15 +188,15 @@ const BlockerLog = () => {
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="flex items-center gap-2 flex-1 min-w-0">
-                  <span className="text-xs text-muted-foreground/50 font-mono shrink-0">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="text-sm text-foreground/70 font-mono shrink-0">{String(i + 1).padStart(2, "0")}</span>
                   <input
                     type="text"
                     value={blocker.item}
                     onChange={(e) => updateBlocker(blocker.id, "item", e.target.value)}
-                    className="bg-transparent border-b border-border/60 py-0.5 text-sm font-semibold text-foreground font-sans placeholder:text-muted-foreground/40 focus:outline-none focus:border-gold/50 transition-colors max-w-[180px]"
+                    className="bg-transparent border-b border-border/60 py-0.5 text-sm font-semibold text-foreground font-sans placeholder:text-foreground/60 focus:outline-none focus:border-gold/50 transition-colors max-w-[180px]"
                     placeholder="Affected item"
                   />
-                  <span className={`text-[10px] font-medium font-sans px-2 py-0.5 rounded-full ${
+                  <span className={`text-sm font-medium font-sans px-2 py-0.5 rounded-full ${
                     blocker.status === "open" ? "bg-red-400/10 text-red-400" : "bg-emerald-500/10 text-emerald-500"
                   }`}>
                     {blocker.status}
@@ -219,17 +219,17 @@ const BlockerLog = () => {
                   </div>
                   <button
                     onClick={() => toggleStatus(blocker.id)}
-                    className={`text-[10px] font-sans px-2 py-0.5 rounded transition-colors ${
+                    className={`text-sm font-sans px-2 py-0.5 rounded transition-colors ${
                       blocker.status === "open"
                         ? "text-emerald-500 hover:bg-emerald-500/10"
-                        : "text-muted-foreground/50 hover:text-red-400"
+                        : "text-foreground/70 hover:text-red-400"
                     }`}
                   >
                     {blocker.status === "open" ? "Resolve" : "Reopen"}
                   </button>
                   <button
                     onClick={() => removeBlocker(blocker.id)}
-                    className="text-muted-foreground/20 hover:text-red-400 transition-colors"
+                    className="text-foreground/40 hover:text-red-400 transition-colors"
                     aria-label="Remove"
                   >
                     <Trash2 size={12} />
@@ -241,18 +241,18 @@ const BlockerLog = () => {
                 type="text"
                 value={blocker.description}
                 onChange={(e) => updateBlocker(blocker.id, "description", e.target.value)}
-                className="w-full bg-transparent text-sm text-muted-foreground font-sans placeholder:text-muted-foreground/30 focus:outline-none"
+                className="w-full bg-transparent text-sm text-foreground/75 font-sans placeholder:text-foreground/50 focus:outline-none"
                 placeholder="Describe the blocker..."
               />
 
-              <div className="flex gap-4 text-[11px] font-sans text-muted-foreground/60">
+              <div className="flex gap-4 text-sm font-sans text-foreground/80">
                 <div className="flex items-center gap-1">
                   <span>Raised:</span>
                   <input
                     type="date"
                     value={blocker.raisedDate}
                     onChange={(e) => updateBlocker(blocker.id, "raisedDate", e.target.value)}
-                    className="bg-transparent text-foreground font-mono text-[11px] focus:outline-none"
+                    className="bg-transparent text-foreground font-mono text-sm focus:outline-none"
                   />
                 </div>
                 {blocker.status === "resolved" && (
@@ -262,7 +262,7 @@ const BlockerLog = () => {
                       type="date"
                       value={blocker.resolvedDate}
                       onChange={(e) => updateBlocker(blocker.id, "resolvedDate", e.target.value)}
-                      className="bg-transparent text-foreground font-mono text-[11px] focus:outline-none"
+                      className="bg-transparent text-foreground font-mono text-sm focus:outline-none"
                     />
                   </div>
                 )}
@@ -272,7 +272,7 @@ const BlockerLog = () => {
         )}
       </div>
 
-      <p className="text-center text-[10px] uppercase tracking-[0.25em] text-muted-foreground/30 font-sans pt-4">
+      <p className="text-center text-sm uppercase tracking-[0.25em] text-foreground/50 font-sans pt-4">
         Built by Syed Imon Rizvi — Qalb Studios
       </p>
     </ToolCard>

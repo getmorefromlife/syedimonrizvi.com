@@ -76,7 +76,7 @@ const SprintCapacityCalculator = () => {
             animate={{ opacity: 1, y: 0 }}
             className="glass-card-strong p-8 md:p-10 text-center mb-8"
           >
-            <p className="text-xs uppercase tracking-widest text-muted-foreground/60 font-sans mb-1">
+            <p className="text-sm uppercase tracking-widest text-foreground/80 font-sans mb-1">
               Team Capacity
             </p>
             <div className="flex items-center justify-center gap-8">
@@ -84,14 +84,14 @@ const SprintCapacityCalculator = () => {
                 <div className="text-5xl md:text-6xl font-serif font-bold gold-text">
                   {totals.points}
                 </div>
-                <p className="text-xs text-muted-foreground/50 font-sans mt-1">Story Points</p>
+                <p className="text-sm text-foreground/70 font-sans mt-1">Story Points</p>
               </div>
               <div className="w-px h-16 bg-border/60" />
               <div>
                 <div className="text-5xl md:text-6xl font-serif font-bold text-foreground">
                   {totals.hours}
                 </div>
-                <p className="text-xs text-muted-foreground/50 font-sans mt-1">Hours</p>
+                <p className="text-sm text-foreground/70 font-sans mt-1">Hours</p>
               </div>
             </div>
           </motion.div>
@@ -104,7 +104,7 @@ const SprintCapacityCalculator = () => {
           <h2 className="font-serif font-semibold text-foreground text-lg">Team Members</h2>
           <button
             onClick={addMember}
-            className="flex items-center gap-1.5 text-xs font-medium text-gold-dark hover:text-gold transition-colors font-sans"
+            className="flex items-center gap-1.5 text-sm font-medium text-gold-dark hover:text-gold transition-colors font-sans"
           >
             <Plus size={14} /> Add Member
           </button>
@@ -120,21 +120,21 @@ const SprintCapacityCalculator = () => {
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <span className="text-xs text-muted-foreground/50 font-mono">{String(i + 1).padStart(2, "0")}</span>
+                <span className="text-sm text-foreground/70 font-mono">{String(i + 1).padStart(2, "0")}</span>
                 <input
                   type="text"
                   value={m.name}
                   onChange={(e) => updateMember(m.id, "name", e.target.value)}
-                  className="bg-transparent border-b border-border/60 py-0.5 text-sm text-foreground font-sans placeholder:text-muted-foreground/40 focus:outline-none focus:border-gold/50 transition-colors"
+                  className="bg-transparent border-b border-border/60 py-0.5 text-sm text-foreground font-sans placeholder:text-foreground/60 focus:outline-none focus:border-gold/50 transition-colors"
                   placeholder="Name"
                 />
               </div>
-              <div className="flex items-center gap-4 text-xs font-sans">
+              <div className="flex items-center gap-4 text-sm font-sans">
                 <span className="text-gold-dark font-medium">{m.cap.points} pts</span>
-                <span className="text-muted-foreground">{m.cap.hours}h</span>
+                <span className="text-foreground/75">{m.cap.hours}h</span>
                 <button
                   onClick={() => removeMember(m.id)}
-                  className="text-muted-foreground/30 hover:text-red-400 transition-colors"
+                  className="text-foreground/50 hover:text-red-400 transition-colors"
                   aria-label="Remove member"
                 >
                   <Trash2 size={13} />
@@ -144,7 +144,7 @@ const SprintCapacityCalculator = () => {
 
             <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
               <div>
-                <label className="block text-[10px] uppercase tracking-wider text-muted-foreground/50 font-sans mb-0.5">
+                <label className="block text-sm uppercase tracking-wider text-foreground/70 font-sans mb-0.5">
                   Days
                 </label>
                 <input
@@ -157,7 +157,7 @@ const SprintCapacityCalculator = () => {
                 />
               </div>
               <div>
-                <label className="block text-[10px] uppercase tracking-wider text-muted-foreground/50 font-sans mb-0.5">
+                <label className="block text-sm uppercase tracking-wider text-foreground/70 font-sans mb-0.5">
                   PTO
                 </label>
                 <input
@@ -170,7 +170,7 @@ const SprintCapacityCalculator = () => {
                 />
               </div>
               <div>
-                <label className="block text-[10px] uppercase tracking-wider text-muted-foreground/50 font-sans mb-0.5">
+                <label className="block text-sm uppercase tracking-wider text-foreground/70 font-sans mb-0.5">
                   Meetings
                 </label>
                 <input
@@ -184,7 +184,7 @@ const SprintCapacityCalculator = () => {
                 />
               </div>
               <div>
-                <label className="block text-[10px] uppercase tracking-wider text-muted-foreground/50 font-sans mb-0.5">
+                <label className="block text-sm uppercase tracking-wider text-foreground/70 font-sans mb-0.5">
                   Focus
                 </label>
                 <input
@@ -198,7 +198,7 @@ const SprintCapacityCalculator = () => {
                 />
               </div>
               <div>
-                <label className="block text-[10px] uppercase tracking-wider text-muted-foreground/50 font-sans mb-0.5">
+                <label className="block text-sm uppercase tracking-wider text-foreground/70 font-sans mb-0.5">
                   Pts/Day
                 </label>
                 <input
@@ -215,7 +215,7 @@ const SprintCapacityCalculator = () => {
         ))}
       </div>
 
-      <p className="text-center text-[10px] uppercase tracking-[0.25em] text-muted-foreground/30 font-sans pt-4">
+      <p className="text-center text-sm uppercase tracking-[0.25em] text-foreground/50 font-sans pt-4">
         Built by Syed Imon Rizvi — Qalb Studios
       </p>
     </ToolCard>
