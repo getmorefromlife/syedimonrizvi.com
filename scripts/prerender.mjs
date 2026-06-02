@@ -14,6 +14,10 @@ const ROUTES = [
   "/portfolio",
   "/studio",
   "/contact",
+  "/tools",
+  "/tools/velocity",
+  "/tools/burndown",
+  "/tools/capacity",
 ];
 
 const MIME = {

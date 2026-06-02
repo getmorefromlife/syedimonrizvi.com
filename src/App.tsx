@@ -12,6 +12,10 @@ import BooksPage from "./pages/BooksPage";
 import PortfolioPage from "./pages/PortfolioPage";
 import StudioPage from "./pages/StudioPage";
 import ContactPage from "./pages/ContactPage";
+import ToolsIndex from "./pages/ToolsIndex";
+import VelocityPage from "./pages/VelocityPage";
+import BurndownPage from "./pages/BurndownPage";
+import CapacityPage from "./pages/CapacityPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +34,10 @@ const App = () => (
           <Route path="/portfolio" element={<><Navbar /><PortfolioPage /><Footer /></>} />
           <Route path="/studio" element={<><Navbar /><StudioPage /><Footer /></>} />
           <Route path="/contact" element={<><Navbar /><ContactPage /><Footer /></>} />
+          <Route path="/tools" element={<ToolsIndex />} />
+          <Route path="/tools/velocity" element={<VelocityPage />} />
+          <Route path="/tools/burndown" element={<BurndownPage />} />
+          <Route path="/tools/capacity" element={<CapacityPage />} />
           <Route path="*" element={<><Navbar /><NotFound /><Footer /></>} />
         </Routes>
       </BrowserRouter>
