@@ -18,6 +18,11 @@ const ROUTES = [
   "/tools/velocity",
   "/tools/burndown",
   "/tools/capacity",
+  "/tools/planning-poker",
+  "/tools/wsjf",
+  "/tools/cost-of-delay",
+  "/tools/effort-impact",
+  "/tools/story-map",
 ];
 
 const MIME = {

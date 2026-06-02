@@ -16,6 +16,11 @@ import ToolsIndex from "./pages/ToolsIndex";
 import VelocityPage from "./pages/VelocityPage";
 import BurndownPage from "./pages/BurndownPage";
 import CapacityPage from "./pages/CapacityPage";
+import PlanningPokerPage from "./pages/PlanningPokerPage";
+import WSJFPage from "./pages/WSJFPage";
+import CostOfDelayPage from "./pages/CostOfDelayPage";
+import EffortImpactPage from "./pages/EffortImpactPage";
+import UserStoryMapPage from "./pages/UserStoryMapPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,6 +43,11 @@ const App = () => (
           <Route path="/tools/velocity" element={<VelocityPage />} />
           <Route path="/tools/burndown" element={<BurndownPage />} />
           <Route path="/tools/capacity" element={<CapacityPage />} />
+          <Route path="/tools/planning-poker" element={<PlanningPokerPage />} />
+          <Route path="/tools/wsjf" element={<WSJFPage />} />
+          <Route path="/tools/cost-of-delay" element={<CostOfDelayPage />} />
+          <Route path="/tools/effort-impact" element={<EffortImpactPage />} />
+          <Route path="/tools/story-map" element={<UserStoryMapPage />} />
           <Route path="*" element={<><Navbar /><NotFound /><Footer /></>} />
         </Routes>
       </BrowserRouter>
