@@ -21,6 +21,11 @@ import WSJFPage from "./pages/WSJFPage";
 import CostOfDelayPage from "./pages/CostOfDelayPage";
 import EffortImpactPage from "./pages/EffortImpactPage";
 import UserStoryMapPage from "./pages/UserStoryMapPage";
+import WIPLimitPage from "./pages/WIPLimitPage";
+import LeadTimeScatterPage from "./pages/LeadTimeScatterPage";
+import ValueStreamPage from "./pages/ValueStreamPage";
+import CycleVsLeadTimePage from "./pages/CycleVsLeadTimePage";
+import BlockerLogPage from "./pages/BlockerLogPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -48,6 +53,11 @@ const App = () => (
           <Route path="/tools/cost-of-delay" element={<CostOfDelayPage />} />
           <Route path="/tools/effort-impact" element={<EffortImpactPage />} />
           <Route path="/tools/story-map" element={<UserStoryMapPage />} />
+          <Route path="/tools/wip-limit" element={<WIPLimitPage />} />
+          <Route path="/tools/lead-time-scatter" element={<LeadTimeScatterPage />} />
+          <Route path="/tools/value-stream" element={<ValueStreamPage />} />
+          <Route path="/tools/cycle-vs-lead" element={<CycleVsLeadTimePage />} />
+          <Route path="/tools/blocker-log" element={<BlockerLogPage />} />
           <Route path="*" element={<><Navbar /><NotFound /><Footer /></>} />
         </Routes>
       </BrowserRouter>

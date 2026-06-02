@@ -23,6 +23,11 @@ const ROUTES = [
   "/tools/cost-of-delay",
   "/tools/effort-impact",
   "/tools/story-map",
+  "/tools/wip-limit",
+  "/tools/lead-time-scatter",
+  "/tools/value-stream",
+  "/tools/cycle-vs-lead",
+  "/tools/blocker-log",
 ];
 
 const MIME = {
